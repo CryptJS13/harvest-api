@@ -5,6 +5,8 @@ const { fetchAndExpandVault } = require('../../src/vaults')
 const { fetchAndExpandPool } = require('../../src/pools')
 const { cliPreload } = require('../../src/runtime/pollers')
 const { getUIData } = require('../../src/lib/data')
+const tokensFile = require('../../../tokens.json')
+const poolsFile = require('../../../pools.json')
 
 const main = async () => {
   const vaultId = process.argv[2]

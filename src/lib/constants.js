@@ -1,4 +1,5 @@
 require('dotenv').config()
+const keys = require('../../dev-keys.json')
 const PORT = process.env.PORT || 3000
 const INFURA_URL =
   process.env.MAINNET_RPC_URL || `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`
@@ -172,8 +173,7 @@ const CHAIN_TYPES = {
 
 const BSC_RPC_URL = process.env.BSC_RPC_URL || 'https://bsc-dataseed2.binance.org/'
 const MATIC_RPC_URL =
-  process.env.MATIC_RPC_URL ||
-  `https://polygon-mainnet.infura.io/v3/${process.env.MATIC_INFURA_KEY}`
+  process.env.MATIC_RPC_URL || `https://polygon-mainnet.g.alchemy.com/v2/${keys.alchemyKey}`
 
 const VENUS_API_URL = 'https://api.venus.io/api/governance/venus'
 const BDO_API_URL = 'https://api.bdollar.fi/api/bdollar/'
