@@ -5,6 +5,8 @@ const { fetchAndExpandVault } = require('../../src/vaults')
 const { fetchAndExpandPool } = require('../../src/pools')
 const { cliPreload } = require('../../src/runtime/pollers')
 const { getUIData } = require('../../src/lib/data')
+const tokensFile = require('../../../tokens.json')
+const poolsFile = require('../../../pools.json')
 
 const main = async () => {
   const vaultId = process.argv[2]
@@ -13,8 +15,10 @@ const main = async () => {
 
   await initDb()
   await cliPreload()
-  const tokens = await getUIData(UI_DATA_FILES.TOKENS)
-  const pools = await getUIData(UI_DATA_FILES.POOLS)
+  // const tokens = await getUIData(UI_DATA_FILES.TOKENS)
+  // const pools = await getUIData(UI_DATA_FILES.POOLS)
+  const tokens = tokensFile.data
+  const pools = poolsFile.data
 
   try {
     console.log('====================')

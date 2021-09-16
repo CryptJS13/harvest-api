@@ -1,7 +1,8 @@
 require('dotenv').config()
+const keys = require('../../dev-keys.json')
 const PORT = process.env.PORT || 3000
-const INFURA_URL = `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`
-const INFURA_WS_URL = `wss://mainnet.infura.io/ws/v3/${process.env.INFURA_KEY}`
+const INFURA_URL = `https://eth-mainnet.alchemyapi.io/v2/${keys.alchemyKey}`
+const INFURA_WS_URL = `wss://eth-mainnet.alchemyapi.io/v2/${keys.alchemyKey}`
 const COINGECKO_PRICE_API_ENDPOINT_CONTRACT = 'https://api.coingecko.com/api/v3/simple/token_price'
 const COINGECKO_PRICE_API_ENDPOINT_ID = 'https://api.coingecko.com/api/v3/simple/price'
 const API_KEY = process.env.API_KEY || 'harvest-key'
@@ -157,8 +158,7 @@ const CHAIN_TYPES = {
 
 const BSC_RPC_URL = process.env.BSC_RPC_URL || 'https://bsc-dataseed2.binance.org/'
 const MATIC_RPC_URL =
-  process.env.MATIC_RPC_URL ||
-  `https://polygon-mainnet.infura.io/v3/${process.env.MATIC_INFURA_KEY}`
+  process.env.MATIC_RPC_URL || `https://polygon-mainnet.g.alchemy.com/v2/${keys.alchemyKey}`
 
 const VENUS_API_URL = 'https://api.venus.io/api/governance/venus'
 const BDO_API_URL = 'https://api.bdollar.fi/api/bdollar/'
