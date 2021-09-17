@@ -13,7 +13,8 @@
     "debug-web3": "DEBUG_MODE=true yarn start",
     "print-vault": "node ./test/cli/print-vault",
     "lint": "eslint ./",
-    "lint-fix": "eslint --fix ./"
+    "lint-fix": "eslint --fix ./",
+    "accounts": "node ./scripts/account-overview"
   },
   "repository": {
     "type": "git",

@@ -37,6 +37,12 @@ const tokenContract = require('../contracts/token/contract.json')
 const farmsteadUSDCMethods = require('../contracts/farmstead-usdc/methods')
 const farmsteadUSDCContract = require('../contracts/farmstead-usdc/contract.json')
 
+const rariComptrollerMethods = require('../contracts/rari-comptroller/methods')
+const rariComptrollerContract = require('../contracts/rari-comptroller/contract.json')
+
+const lendingTokenMethods = require('../contracts/lending-token/methods')
+const lendingTokenContract = require('../contracts/lending-token/contract.json')
+
 const amplifierContract = require('../contracts/amplifier/contract.json')
 
 module.exports = {
@@ -94,5 +100,13 @@ module.exports = {
   farmsteadUSDC: {
     contract: farmsteadUSDCContract,
     methods: farmsteadUSDCMethods,
+  },
+  rariComptroller: {
+    contract: rariComptrollerContract,
+    methods: rariComptrollerMethods,
+  },
+  lendingToken: {
+    contract: lendingTokenContract,
+    methods: lendingTokenMethods,
   },
 }
