@@ -262,7 +262,19 @@ module.exports = {
     tokenAddress: addresses.MATIC.miFARM,
     displayName: 'miFARM',
     vaultAddress: null,
-    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.FARM] },
+    priceFunction: { type: GET_PRICE_TYPES.F_TOKEN, params: [addresses.iFARM, '18'] },
+  },
+  WMATIC: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    decimals: '18',
+    logoUrl: './icons/wmatic.png',
+    tokenAddress: addresses.MATIC.WMATIC,
+    displayName: 'WMATIC',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_CONTRACT,
+      params: [addresses.MATIC.WMATIC, CHAINS_ID.MATIC_MAINNET],
+    },
   },
   QUICK: {
     chain: CHAINS_ID.MATIC_MAINNET,
@@ -903,6 +915,12 @@ module.exports = {
         params: ['0.00'],
       },
     ],
+    migrationInfo: {
+      lpTokenAddress: '0xAE461cA67B15dc8dc81CE7615e0320dA1A9aB8D5',
+      lpTokenName: 'USDC-DAI',
+      lpTokenDecimals: '18',
+    },
+    zapFrontrunProtection: true,
     cmcRewardTokenSymbols: ['iFARM', 'DAI', 'USDC'],
   },
   UniV3_UNI_ETH: {
@@ -2388,8 +2406,8 @@ module.exports = {
     decimals: '18',
     vaultAddress: addresses.iFARM,
     priceFunction: {
-      type: GET_PRICE_TYPES.COINGECKO_CONTRACT,
-      params: [addresses.iFARM],
+      type: GET_PRICE_TYPES.F_TOKEN,
+      params: [addresses.iFARM, '18'],
     },
     estimateApyFunctions: [
       {

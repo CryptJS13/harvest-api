@@ -4353,8 +4353,8 @@ module.exports = [
     collateralAddress: addresses.MATIC.balancer_POLYBASE.NewVault,
     rewardAPY: [],
     rewardAPR: null,
-    rewardTokens: [addresses.MATIC.miFARM],
-    rewardTokenSymbols: ['miFARM'],
+    rewardTokens: [addresses.MATIC.miFARM, addresses.MATIC.WMATIC],
+    rewardTokenSymbols: ['miFARM', 'WMATIC'],
     stakeAndDepositHelpMessage: `
     <div class="help-message">
       <b>Deposit and stake:</b>
@@ -4386,8 +4386,8 @@ module.exports = [
     collateralAddress: addresses.MATIC.balancer_TRICRYPTO.NewVault,
     rewardAPY: [],
     rewardAPR: null,
-    rewardTokens: [addresses.MATIC.miFARM],
-    rewardTokenSymbols: ['miFARM'],
+    rewardTokens: [addresses.MATIC.miFARM, addresses.MATIC.WMATIC],
+    rewardTokenSymbols: ['miFARM', 'WMATIC'],
     stakeAndDepositHelpMessage: `
     <div class="help-message">
       <b>Deposit and stake:</b>
@@ -4419,8 +4419,8 @@ module.exports = [
     collateralAddress: addresses.MATIC.balancer_STABLE.NewVault,
     rewardAPY: [],
     rewardAPR: null,
-    rewardTokens: [addresses.MATIC.miFARM],
-    rewardTokenSymbols: ['miFARM'],
+    rewardTokens: [addresses.MATIC.miFARM, addresses.MATIC.WMATIC],
+    rewardTokenSymbols: ['miFARM', 'WMATIC'],
     stakeAndDepositHelpMessage: `
     <div class="help-message">
       <b>Deposit and stake:</b>
@@ -4441,6 +4441,10 @@ module.exports = [
  `,
   },
   {
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.LP,
+      params: [addresses.V2.sushi_YEL_ETH.Underlying],
+    },
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'sushi_YEL_ETH',
     type: POOL_TYPES.INCENTIVE,
