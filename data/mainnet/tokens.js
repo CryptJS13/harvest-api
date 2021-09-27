@@ -11,6 +11,7 @@ const addresses = require('./addresses.json')
 
 const strat30PercentFactor = '0.7'
 const profitSharingCut8Percent = '0.92'
+const convexProfitSharingFactor = '0.63'
 
 module.exports = {
   FARM: {
@@ -43,6 +44,46 @@ module.exports = {
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'WETH'],
+  },
+  crvMIM: {
+    isNew: true,
+    chain: CHAINS_ID.ETH_MAINNET,
+    category: VAULT_CATEGORIES_IDS.STABLECOINS,
+    displayName: 'CRV:MIM',
+    apyIconUrls: ['./icons/curve.png', './icons/cvx.png', './icons/spell.png'],
+    apyTokenSymbols: ['CRV', 'CVX', 'SPELL'],
+    logoUrl: './icons/mim.png',
+    tokenAddress: addresses.V2.convex_MIM.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.V2.convex_MIM.NewVault,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.MIM] },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.CONVEX,
+        params: ['mim', convexProfitSharingFactor],
+      },
+    ],
+    cmcRewardTokenSymbols: ['FARM', 'CVX', 'SPELL', 'CRV'],
+  },
+  crvEURT: {
+    isNew: true,
+    chain: CHAINS_ID.ETH_MAINNET,
+    category: VAULT_CATEGORIES_IDS.STABLECOINS,
+    displayName: 'CRV:EURT',
+    apyIconUrls: ['./icons/curve.png', './icons/cvx.png'],
+    apyTokenSymbols: ['CRV', 'CVX'],
+    logoUrl: './icons/eurt.png',
+    tokenAddress: addresses.V2.convex_EURT.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.V2.convex_EURT.NewVault,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.EURT] },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.CONVEX,
+        params: ['eurt', convexProfitSharingFactor],
+      },
+    ],
+    cmcRewardTokenSymbols: ['FARM', 'CVX', 'CRV'],
   },
   YEL: {
     chain: CHAINS_ID.ETH_MAINNET,
@@ -440,7 +481,7 @@ module.exports = {
   },
   Uni_FOX_WETH: {
     chain: CHAINS_ID.ETH_MAINNET,
-    category: VAULT_CATEGORIES_IDS.GENERAL,
+    category: VAULT_CATEGORIES_IDS.LIQUIDITY,
     displayName: 'Shapeshift: FOX-WETH',
     fullBuyback: true,
     apyIconUrls: ['./icons/fox.png'],
@@ -484,7 +525,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['tricrypto2', strat30PercentFactor],
+        params: ['tricrypto2', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'CVX', 'CRV'],
@@ -525,7 +566,7 @@ module.exports = {
         params: [
           addresses.V2.bal_BAL_WETH.Underlying,
           addresses.V2.bal_BAL_WETH.PoolId,
-          '32000',
+          '30000',
           strat30PercentFactor,
           CHAINS_ID.ETH_MAINNET,
         ],
@@ -591,7 +632,7 @@ module.exports = {
         params: [
           addresses.V2.bal_USDC_WETH.Underlying,
           addresses.V2.bal_USDC_WETH.PoolId,
-          '5000',
+          '1100',
           strat30PercentFactor,
           CHAINS_ID.ETH_MAINNET,
         ],
@@ -624,7 +665,7 @@ module.exports = {
         params: [
           addresses.V2.bal_USDT_WETH.Underlying,
           addresses.V2.bal_USDT_WETH.PoolId,
-          '5000',
+          '120',
           strat30PercentFactor,
           CHAINS_ID.ETH_MAINNET,
         ],
@@ -1209,7 +1250,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['usdp', strat30PercentFactor],
+        params: ['usdp', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'CVX', 'CRV'],
@@ -1278,7 +1319,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['hbtc', strat30PercentFactor],
+        params: ['hbtc', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'CVX', 'CRV'],
@@ -1297,7 +1338,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['obtc', strat30PercentFactor],
+        params: ['obtc', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'CVX', 'BOR', 'CRV'],
@@ -1317,7 +1358,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['tbtc', strat30PercentFactor],
+        params: ['tbtc', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'KEEP', 'CRV', 'CVX'],
@@ -1336,7 +1377,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['ren', strat30PercentFactor],
+        params: ['ren', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'CVX', 'CRV'],
@@ -1344,10 +1385,10 @@ module.exports = {
   WBTC: {
     chain: CHAINS_ID.ETH_MAINNET,
     displayName: 'WBTC',
-    category: VAULT_CATEGORIES_IDS.BTC,
+    category: VAULT_CATEGORIES_IDS.INACTIVE,
     logoUrl: './icons/wbtc.png',
-    apyIconUrls: ['./icons/comp.png', './icons/idle.png'],
-    apyTokenSymbols: ['COMP', 'IDLE'],
+    apyIconUrls: [],
+    apyTokenSymbols: [],
     tokenAddress: addresses.WBTC,
     decimals: '8',
     vaultAddress: addresses.V2.WBTC.NewVault,
@@ -1374,7 +1415,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['steth', strat30PercentFactor],
+        params: ['steth', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'CVX', 'LDO', 'CRV'],
@@ -2054,7 +2095,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['husd', strat30PercentFactor],
+        params: ['husd', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'CVX', 'CRV'],
@@ -2062,9 +2103,9 @@ module.exports = {
   YCRV: {
     chain: CHAINS_ID.ETH_MAINNET,
     displayName: 'YCRV',
-    category: VAULT_CATEGORIES_IDS.STABLECOINS,
-    apyIconUrls: ['./icons/curve.png', './icons/cvx.png'],
-    apyTokenSymbols: ['CRV', 'CVX'],
+    category: VAULT_CATEGORIES_IDS.INACTIVE,
+    apyIconUrls: [],
+    apyTokenSymbols: [],
     logoUrl: './icons/ycrv.png',
     tokenAddress: addresses.YCRV,
     decimals: '18',
@@ -2073,7 +2114,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['iearn', strat30PercentFactor],
+        params: ['iearn', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'CVX', 'CRV'],
@@ -2092,7 +2133,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['3pool', strat30PercentFactor],
+        params: ['3pool', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'CVX', 'CRV'],
@@ -2111,7 +2152,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['compound', strat30PercentFactor],
+        params: ['compound', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'CVX', 'CRV'],
@@ -2130,7 +2171,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['busd', strat30PercentFactor],
+        params: ['busd', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'CVX', 'CRV'],
@@ -2149,7 +2190,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['usdn', strat30PercentFactor],
+        params: ['usdn', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'CVX', 'CRV'],
@@ -2345,7 +2386,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['eurs', strat30PercentFactor],
+        params: ['eurs', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'CVX', 'CRV'],
@@ -2379,10 +2420,10 @@ module.exports = {
   },
   crvUST: {
     chain: CHAINS_ID.ETH_MAINNET,
-    category: VAULT_CATEGORIES_IDS.STABLECOINS,
+    category: VAULT_CATEGORIES_IDS.INACTIVE,
     displayName: 'CRV:UST',
-    apyIconUrls: ['./icons/curve.png', './icons/cvx.png'],
-    apyTokenSymbols: ['CRV', 'CVX'],
+    apyIconUrls: [],
+    apyTokenSymbols: [],
     logoUrl: './icons/curve-ust.png',
     tokenAddress: addresses.V2.crvUST.Underlying,
     decimals: '18',
@@ -2391,7 +2432,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['ust', strat30PercentFactor],
+        params: ['ust', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['FARM', 'CVX', 'CRV'],
@@ -3159,7 +3200,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.CONVEX,
-        params: ['link', strat30PercentFactor],
+        params: ['link', convexProfitSharingFactor],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'CVX', 'CRV'],
