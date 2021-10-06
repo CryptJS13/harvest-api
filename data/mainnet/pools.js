@@ -4,6 +4,24 @@ const addresses = require('./addresses.json')
 module.exports = [
   {
     chain: CHAINS_ID.ETH_MAINNET,
+    id: 'UniV3_DON_WETH_full_range',
+    tradingApyFunction: {
+      type: 'UNIV3_V2',
+      params: [addresses.V2.uni_v3_DON_WETH_full_range.NewVault],
+    },
+    type: POOL_TYPES.UNIV3,
+    contractAddress: addresses.V2.uni_v3_DON_WETH_full_range.NewPool,
+    collateralAddress: addresses.V2.uni_v3_DON_WETH_full_range.NewVault,
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM, addresses.DON],
+    rewardTokenSymbols: ['iFARM', 'DON'],
+    vestingDescriptionOverride: {
+      iFARM: '',
+      DON: '2/3rds of <b>DON</b> rewards are vested for 6 months',
+    },
+  },
+  {
+    chain: CHAINS_ID.ETH_MAINNET,
     id: 'farm-curve-mim',
     type: POOL_TYPES.INCENTIVE,
     contractAddress: addresses.V2.convex_MIM.NewPool,
@@ -253,6 +271,7 @@ module.exports = [
     rewardAPR: null,
     rewardTokens: [addresses.FARM],
     rewardTokenSymbols: ['FARM'],
+    vestingDescriptionOverride: { FARM: '2/3rds of <b>FARM</b> rewards are vested for 6 months' },
     stakeAndDepositHelpMessage: `
       <div class="help-message">
         <b>Deposit and stake:</b>
@@ -3778,7 +3797,7 @@ module.exports = [
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_zUSD_USDC_full_range',
     tradingApyFunction: {
-      type: TRADING_APY_TYPES.UNIV3,
+      type: 'UNIV3_V2',
       params: [addresses.V2.UniV3_zUSD_USDC_full_range.NewVault],
     },
     type: POOL_TYPES.UNIV3,
@@ -3787,6 +3806,7 @@ module.exports = [
     rewardAPY: [],
     rewardTokens: [addresses.iFARM, addresses.REI],
     rewardTokenSymbols: ['iFARM', 'REI'],
+    vestingDescriptionOverride: { iFARM: '' },
   },
   {
     chain: CHAINS_ID.ETH_MAINNET,
@@ -4368,12 +4388,13 @@ module.exports = [
     rewardAPY: [],
     rewardTokens: [addresses.iFARM, addresses.zUSD],
     rewardTokenSymbols: ['iFARM', 'zUSD'],
+    vestingDescriptionOverride: { iFARM: '' },
   },
   {
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_REI_ETH_full_range',
     tradingApyFunction: {
-      type: TRADING_APY_TYPES.UNIV3,
+      type: 'UNIV3_V2',
       params: [addresses.V2.UniV3_REI_ETH_full_range.NewVault],
     },
     type: POOL_TYPES.UNIV3,
@@ -4564,19 +4585,5 @@ module.exports = [
         </ol>
       </div>
    `,
-  },
-  {
-    chain: CHAINS_ID.ETH_MAINNET,
-    id: 'UniV3_DON_WETH_full_range',
-    tradingApyFunction: {
-      type: TRADING_APY_TYPES.UNIV3,
-      params: [addresses.V2.uni_v3_DON_WETH_full_range.NewVault],
-    },
-    type: POOL_TYPES.UNIV3,
-    contractAddress: addresses.V2.uni_v3_DON_WETH_full_range.NewPool,
-    collateralAddress: addresses.V2.uni_v3_DON_WETH_full_range.NewVault,
-    rewardAPY: [],
-    rewardTokens: [addresses.iFARM, addresses.DON],
-    rewardTokenSymbols: ['iFARM', 'DON'],
   },
 ]
