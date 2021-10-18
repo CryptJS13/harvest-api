@@ -9,6 +9,30 @@ const {
 const { getWeb3 } = require('../src/lib/web3')
 const { getTokenPrice } = require('../src/prices')
 const { getTokenPriceById } = require('../src/prices/coingecko.js')
+const { CHAIN_TYPES } = require('../src/lib/constants.js')
+
+async function getNativeBalances(account) {
+  let totalUsd = 0
+  for (const i in CHAIN_TYPES) {
+    const chain = CHAIN_TYPES[i]
+    const provider = getWeb3(chain)
+    const balance = new BigNumber(await provider.eth.getBalance(account)).div(1e18)
+    let price
+    if (chain == '1') {
+      price = await getTokenPrice('WETH')
+    } else if (chain == '56') {
+      price = await getTokenPrice('WBNB')
+    } else if (chain == '137') {
+      price = await getTokenPrice('0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270', chain)
+    }
+    const value = balance.times(price)
+    if (value > 0) {
+      console.log("USD value on", i, ":", value.toNumber(), "usd")
+      totalUsd += value.toNumber()
+    }
+  }
+  return totalUsd
+}
 
 async function getPoolBalances(account, pool) {
   const web3Instance = getWeb3(pool.chain)
@@ -82,7 +106,10 @@ async function getRariBalance(account) {
     const { methods: {getBalance, getExchangeRate, getBorrowBalance, getUnderlying}} = lendingTokenContract
     const balance = new BigNumber(await getBalance(account, assetInstance)).div(1e8)
 
-    const underlying = await getUnderlying(assetInstance)
+    let underlying = await getUnderlying(assetInstance)
+    if (underlying == "0x0000000000000000000000000000000000000000"){
+      underlying = "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+    }
     const underlyingInstance = new web3Instance.eth.Contract(tokenContract.contract.abi, underlying)
     let { methods: {getDecimals}} = tokenContract
     const underlyingDecimals = new BigNumber(await getDecimals(underlyingInstance))
@@ -126,6 +153,7 @@ async function getUSDEUR() {
 }
 
 module.exports = {
+  getNativeBalances,
   getPoolBalances,
   getUsdValue,
   getRariBalance,
