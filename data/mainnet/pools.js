@@ -2682,6 +2682,10 @@ module.exports = [
     rewardAPR: null,
     rewardTokens: [addresses.BSC.bFARM],
     rewardTokenSymbols: ['bFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.VENUS,
+      params: ['vXVS'],
+    },
   },
   {
     chain: CHAINS_ID.BSC_MAINNET,
@@ -2693,6 +2697,10 @@ module.exports = [
     rewardAPR: null,
     rewardTokens: [addresses.BSC.bFARM],
     rewardTokenSymbols: ['bFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.VENUS,
+      params: ['vDAI'],
+    },
   },
   {
     chain: CHAINS_ID.BSC_MAINNET,
@@ -2704,6 +2712,10 @@ module.exports = [
     rewardAPR: null,
     rewardTokens: [addresses.BSC.bFARM],
     rewardTokenSymbols: ['bFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.VENUS,
+      params: ['vUSDC'],
+    },
   },
   {
     chain: CHAINS_ID.BSC_MAINNET,
@@ -2715,6 +2727,10 @@ module.exports = [
     rewardAPR: null,
     rewardTokens: [addresses.BSC.bFARM],
     rewardTokenSymbols: ['bFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.VENUS,
+      params: ['vUSDT'],
+    },
   },
   {
     chain: CHAINS_ID.BSC_MAINNET,
@@ -2726,6 +2742,10 @@ module.exports = [
     rewardAPR: null,
     rewardTokens: [addresses.BSC.bFARM],
     rewardTokenSymbols: ['bFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.VENUS,
+      params: ['vBUSD'],
+    },
   },
   {
     chain: CHAINS_ID.BSC_MAINNET,
@@ -2748,6 +2768,10 @@ module.exports = [
     rewardAPR: null,
     rewardTokens: [addresses.BSC.bFARM],
     rewardTokenSymbols: ['bFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.VENUS,
+      params: ['vETH'],
+    },
   },
   {
     chain: CHAINS_ID.BSC_MAINNET,
@@ -2759,6 +2783,10 @@ module.exports = [
     rewardAPR: null,
     rewardTokens: [addresses.BSC.bFARM],
     rewardTokenSymbols: ['bFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.VENUS,
+      params: ['vBETH'],
+    },
   },
   {
     chain: CHAINS_ID.BSC_MAINNET,
@@ -2770,6 +2798,10 @@ module.exports = [
     rewardAPR: null,
     rewardTokens: [addresses.BSC.bFARM],
     rewardTokenSymbols: ['bFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.VENUS,
+      params: ['vBTC'],
+    },
   },
   {
     chain: CHAINS_ID.BSC_MAINNET,
@@ -2781,6 +2813,10 @@ module.exports = [
     rewardAPR: null,
     rewardTokens: [addresses.BSC.bFARM],
     rewardTokenSymbols: ['bFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.VENUS,
+      params: ['vBNB'],
+    },
   },
   {
     tradingApyFunction: {
@@ -3673,6 +3709,10 @@ module.exports = [
     rewardAPY: [],
     rewardTokens: [addresses.BSC.bFARM],
     rewardTokenSymbols: ['bFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.BELT,
+      params: [addresses.BSC.belt_BNB.PoolId],
+    },
     stakeAndDepositHelpMessage: `
       <div class="help-message">
         <b>Deposit and stake:</b>
@@ -3702,6 +3742,10 @@ module.exports = [
     rewardAPY: [],
     rewardTokens: [addresses.BSC.bFARM],
     rewardTokenSymbols: ['bFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.BELT,
+      params: [addresses.BSC.belt_ETH.PoolId],
+    },
     stakeAndDepositHelpMessage: `
       <div class="help-message">
         <b>Deposit and stake:</b>
@@ -3731,6 +3775,10 @@ module.exports = [
     rewardAPY: [],
     rewardTokens: [addresses.BSC.bFARM],
     rewardTokenSymbols: ['bFARM'],
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.BELT,
+      params: [addresses.BSC.belt_BTCB.PoolId],
+    },
     stakeAndDepositHelpMessage: `
       <div class="help-message">
         <b>Deposit and stake:</b>
@@ -3963,10 +4011,6 @@ module.exports = [
   {
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_USDC_ETH',
-    tradingApyFunction: {
-      type: TRADING_APY_TYPES.UNIV3,
-      params: [addresses.V2.UniV3_USDC_ETH.NewVault],
-    },
     type: POOL_TYPES.UNIV3,
     contractAddress: addresses.V2.UniV3_USDC_ETH.NewPool,
     collateralAddress: addresses.V2.UniV3_USDC_ETH.NewVault,
@@ -4033,10 +4077,6 @@ module.exports = [
   {
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_ETH_USDT',
-    tradingApyFunction: {
-      type: TRADING_APY_TYPES.UNIV3,
-      params: [addresses.V2.UniV3_ETH_USDT.NewVault],
-    },
     type: POOL_TYPES.UNIV3,
     contractAddress: addresses.V2.UniV3_ETH_USDT.NewPool,
     collateralAddress: addresses.V2.UniV3_ETH_USDT.NewVault,
@@ -4061,10 +4101,6 @@ module.exports = [
   {
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_DAI_ETH',
-    tradingApyFunction: {
-      type: TRADING_APY_TYPES.UNIV3,
-      params: [addresses.V2.UniV3_DAI_ETH.NewVault],
-    },
     type: POOL_TYPES.UNIV3,
     contractAddress: addresses.V2.UniV3_DAI_ETH.NewPool,
     collateralAddress: addresses.V2.UniV3_DAI_ETH.NewVault,

@@ -1,8 +1,10 @@
 require('dotenv').config()
 const keys = require('../../dev-keys.json')
 const PORT = process.env.PORT || 3000
-const INFURA_URL = `https://eth-mainnet.alchemyapi.io/v2/${keys.alchemyKey}`
-const INFURA_WS_URL = `wss://eth-mainnet.alchemyapi.io/v2/${keys.alchemyKey}`
+const INFURA_URL =
+  process.env.MAINNET_RPC_URL || `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`
+const INFURA_WS_URL =
+  process.env.MAINNET_WS_URL || `wss://mainnet.infura.io/ws/v3/${process.env.INFURA_KEY}`
 const COINGECKO_PRICE_API_ENDPOINT_CONTRACT = 'https://api.coingecko.com/api/v3/simple/token_price'
 const COINGECKO_PRICE_API_ENDPOINT_ID = 'https://api.coingecko.com/api/v3/simple/price'
 const API_KEY = process.env.API_KEY || 'harvest-key'
@@ -41,6 +43,7 @@ const ESTIMATED_APY_TYPES = {
   COMPOUND: 'COMPOUND',
   SUSHI: 'SUSHI',
   IDLE_FINANCE: 'IDLE_FINANCE',
+  NARWHALE: 'NARWHALE',
   BASIS: 'BASIS',
   NATIVE_SUSHI: 'NATIVE_SUSHI',
   SUSHI_PLUS_NATIVE: 'SUSHI_PLUS_NATIVE',
@@ -59,12 +62,18 @@ const ESTIMATED_APY_TYPES = {
   COMPFI: 'COMPFI',
   CONVEX: 'CONVEX',
   BALANCER: 'BALANCER',
+  BALANCER_POLYGON: 'BALANCER_POLYGON',
 }
 
 const TRADING_APY_TYPES = {
   LP: 'LP',
   BALANCER: 'BALANCER',
   UNIV3: 'UNIV3',
+  UNIV3_V2: 'UNIV3_V2',
+  RARI_FARMSTEAD_USDC: 'RARI_FARMSTEAD_USDC',
+  CONVEX: 'CONVEX',
+  BELT: 'BELT',
+  VENUS: 'VENUS',
 }
 
 const COLLATERAL_TYPE = {
@@ -163,6 +172,7 @@ const VENUS_API_URL = 'https://api.venus.io/api/governance/venus'
 const BDO_API_URL = 'https://api.bdollar.fi/api/bdollar/'
 const ELLIPSIS_API_URL = 'https://api.ellipsis.finance/api/'
 const SWIRL_API_URL = 'https://api.swirl.cash/'
+const BELT_API_URL = 'https://s.belt.fi/info/all.json'
 
 const BALANCER_SUBGRAPH_URLS = {
   ETH: 'https://api.thegraph.com/subgraphs/name/balancer-labs/balancer-v2',
@@ -235,6 +245,7 @@ module.exports = {
   BDO_API_URL,
   ELLIPSIS_API_URL,
   SWIRL_API_URL,
+  BELT_API_URL,
   DEBUG_MODE,
   DB_CACHE_IDS,
   PROFIT_SHARING_POOL_ID,
