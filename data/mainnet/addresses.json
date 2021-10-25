@@ -990,7 +990,8 @@
       "Underlying": "0x470e8de2eBaef52014A47Cb5E6aF86884947F08c",
       "NewVault": "0x9AF516e9095069972528eeba8E55275e31fE7734",
       "RewardPool": "0xDd80E21669A664Bce83E3AD9a0d74f8Dad5D9E72",
-      "NewPool": "0x34D358cd25e4BBdcf7D30887c55FE68E0F25dC65"
+      "NewPool": "0x34D358cd25e4BBdcf7D30887c55FE68E0F25dC65",
+      "doHardwork": "onlyProfit"
     },
     "sushi_PHTR_FARM": {
       "Underlying": "0x15D1FEEcc23691E2E5E39490F5fc14413f9d909A",
@@ -1042,7 +1043,7 @@
       "NewPool": "0xea2EC079345E559cBD4b06E477370D51F4Ef3B10",
       "doHardwork": "onlyProfit"
     },
-    "uni_v3_DON_WETH_full_range": {
+    "UniV3_DON_WETH_full_range": {
       "NewVault": "0x25642078C595A7078f150e5E0486364077aE9eBB",
       "Underlying": [
         "0x4576E6825B462b6916D2a41E187626E9090A92c6",
@@ -1083,7 +1084,7 @@
       "NewStrategy": "0x01579527d5734C03b8220E96dd5754346BfdFD63",
       "NewPool": "0xa6f85bB21Ff71ac0A5890F76fD2514D76e0035EF"
     },
-    "uni_v3_USDC_ETH_3000_4500": {
+    "UniV3_USDC_ETH_3000_4500": {
       "NewVault": "0x3b2ED6013f961404AbA5a030e20A2AceB486832d",
       "DataContract": "0x7D2574BD588F24E554321d7edf4BbE8FB9057Df1",
       "NewPool": "0x7931D6263798f99A082Caf1416b2457605628e2D",
@@ -1096,7 +1097,7 @@
         "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
       ]
     },
-    "uni_v3_DAI_ETH_3000_4500": {
+    "UniV3_DAI_ETH_3000_4500": {
       "NewVault": "0x503Ea79B73995Cf0C8d323C17782047ED5cC72B2",
       "DataContract": "0x99b54e1CCb28137c382796b7b7b5ed61Eda98695",
       "FeeAmount": "3000",
@@ -1109,7 +1110,7 @@
         "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
       ]
     },
-    "uni_v3_USDT_ETH_3000_4500": {
+    "UniV3_USDT_ETH_3000_4500": {
       "NewVault": "0xc53DaB6fDD18AF6CD5cF37fDE7C941d368f8664f",
       "DataContract": "0x4E73454a1DC53daCd7Cc98F124E4D459Dea0DD1b",
       "FeeAmount": "3000",
