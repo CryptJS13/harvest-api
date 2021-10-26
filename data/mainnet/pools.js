@@ -4,6 +4,20 @@ const addresses = require('./addresses.json')
 module.exports = [
   {
     chain: CHAINS_ID.ETH_MAINNET,
+    id: 'UniV3_CNG_ETH',
+    tradingApyFunction: {
+      type: TRADING_APY_TYPES.UNIV3_V2,
+      params: [addresses.V2.UniV3_CNG_ETH.NewVault],
+    },
+    type: POOL_TYPES.UNIV3,
+    contractAddress: addresses.V2.UniV3_CNG_ETH.NewPool,
+    collateralAddress: addresses.V2.UniV3_CNG_ETH.NewVault,
+    rewardAPY: [],
+    rewardTokens: [addresses.iFARM, addresses.ecoCNG],
+    rewardTokenSymbols: ['iFARM', 'ecoCNG'],
+  },
+  {
+    chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_USDC_ETH_3000_4500',
     tradingApyFunction: {
       type: TRADING_APY_TYPES.UNIV3_V2,
@@ -2847,8 +2861,8 @@ module.exports = [
     collateralAddress: addresses.BSC.pancake_CAKE.NewVault,
     rewardAPY: [],
     rewardAPR: null,
-    rewardTokens: [addresses.BSC.bFARM],
-    rewardTokenSymbols: ['bFARM'],
+    rewardTokens: [addresses.BSC.bFARM, addresses.BSC.ampliFARM],
+    rewardTokenSymbols: ['bFARM', 'ampliFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
         <b>Deposit and stake:</b>
@@ -2884,8 +2898,8 @@ module.exports = [
     collateralAddress: addresses.BSC.pancake_CAKE_BNB.NewVault,
     rewardAPY: [],
     rewardAPR: null,
-    rewardTokens: [addresses.BSC.bFARM],
-    rewardTokenSymbols: ['bFARM'],
+    rewardTokens: [addresses.BSC.bFARM, addresses.BSC.ampliFARM],
+    rewardTokenSymbols: ['bFARM', 'ampliFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
         <b>Deposit and stake:</b>
@@ -2959,8 +2973,8 @@ module.exports = [
     collateralAddress: addresses.BSC.pancake_USDT_BNB.NewVault,
     rewardAPY: [],
     rewardAPR: null,
-    rewardTokens: [addresses.BSC.bFARM],
-    rewardTokenSymbols: ['bFARM'],
+    rewardTokens: [addresses.BSC.bFARM, addresses.BSC.ampliFARM],
+    rewardTokenSymbols: ['bFARM', 'ampliFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
         <b>Deposit and stake:</b>
@@ -3030,8 +3044,8 @@ module.exports = [
     collateralAddress: addresses.BSC.goose_EGG_BNB.NewVault,
     rewardAPY: [],
     rewardAPR: null,
-    rewardTokens: [addresses.BSC.bFARM],
-    rewardTokenSymbols: ['bFARM'],
+    rewardTokens: [addresses.BSC.bFARM, addresses.BSC.ampliFARM],
+    rewardTokenSymbols: ['bFARM', 'ampliFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
         <b>Deposit and stake:</b>
@@ -3889,8 +3903,8 @@ module.exports = [
     contractAddress: addresses.BSC.ellipsis_BTC.NewPool,
     collateralAddress: addresses.BSC.ellipsis_BTC.NewVault,
     rewardAPY: [],
-    rewardTokens: [addresses.BSC.bFARM],
-    rewardTokenSymbols: ['bFARM'],
+    rewardTokens: [addresses.BSC.bFARM, addresses.BSC.ampliFARM],
+    rewardTokenSymbols: ['bFARM', 'ampliFARM'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
         <b>Deposit and stake:</b>
@@ -4577,6 +4591,122 @@ module.exports = [
     rewardAPY: [],
     rewardTokens: [addresses.iFARM],
     rewardTokenSymbols: ['iFARM'],
+  },
+  {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    id: 'jarvis_JEUR_USDC_HODL',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.MATIC.jarvis_JEUR_USDC_HODL.NewPool,
+    collateralAddress: addresses.MATIC.jarvis_JEUR_USDC_HODL.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.MATIC.miFARM, addresses.MATIC.jarvis_AUR_USDC.NewVault],
+    rewardTokenSymbols: ['miFARM', 'fAUR-USDC'],
+    stakeAndDepositHelpMessage: `
+    <div class="help-message">
+      <b>Deposit and stake:</b>
+      <ol class="numeric-list">
+        <li>
+          Go to&nbsp;
+          <a target="_blank" rel="noopener noreferrer" href="https://yield.jarvis.network/yield">
+            Jarvis Network
+          </a>
+          and add liquidity for jEUR-USDC
+        </li>
+        <li>
+          Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+          &quot;Stake for rewards&quot; checked for staking
+        </li>
+      </ol>
+    </div>
+ `,
+  },
+  {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    id: 'jarvis_JGBP_USDC_HODL',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.MATIC.jarvis_JGBP_USDC_HODL.NewPool,
+    collateralAddress: addresses.MATIC.jarvis_JGBP_USDC_HODL.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.MATIC.miFARM, addresses.MATIC.jarvis_AUR_USDC.NewVault],
+    rewardTokenSymbols: ['miFARM', 'fAUR-USDC'],
+    stakeAndDepositHelpMessage: `
+    <div class="help-message">
+      <b>Deposit and stake:</b>
+      <ol class="numeric-list">
+        <li>
+          Go to&nbsp;
+          <a target="_blank" rel="noopener noreferrer" href="https://yield.jarvis.network/yield">
+            Jarvis Network
+          </a>
+          and add liquidity for jGBP-USDC
+        </li>
+        <li>
+          Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+          &quot;Stake for rewards&quot; checked for staking
+        </li>
+      </ol>
+    </div>
+ `,
+  },
+  {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    id: 'jarvis_JCHF_USDC_HODL',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.MATIC.jarvis_JCHF_USDC_HODL.NewPool,
+    collateralAddress: addresses.MATIC.jarvis_JCHF_USDC_HODL.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.MATIC.miFARM, addresses.MATIC.jarvis_AUR_USDC.NewVault],
+    rewardTokenSymbols: ['miFARM', 'fAUR-USDC'],
+    stakeAndDepositHelpMessage: `
+    <div class="help-message">
+      <b>Deposit and stake:</b>
+      <ol class="numeric-list">
+        <li>
+          Go to&nbsp;
+          <a target="_blank" rel="noopener noreferrer" href="https://yield.jarvis.network/yield">
+            Jarvis Network
+          </a>
+          and add liquidity for jCHF-USDC
+        </li>
+        <li>
+          Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+          &quot;Stake for rewards&quot; checked for staking
+        </li>
+      </ol>
+    </div>
+ `,
+  },
+  {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    id: 'jarvis_AUR_USDC',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.MATIC.jarvis_AUR_USDC.NewPool,
+    collateralAddress: addresses.MATIC.jarvis_AUR_USDC.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.MATIC.miFARM, addresses.MATIC.jarvis_AUR_USDC.NewVault],
+    rewardTokenSymbols: ['miFARM'],
+    stakeAndDepositHelpMessage: `
+    <div class="help-message">
+      <b>Deposit and stake:</b>
+      <ol class="numeric-list">
+        <li>
+          Go to&nbsp;
+          <a target="_blank" rel="noopener noreferrer" href="https://yield.jarvis.network/yield">
+            Jarvis Network
+          </a>
+          and add liquidity for AUR-USDC
+        </li>
+        <li>
+          Go back to this vault, hit &quot;MAX&quot; and then &quot;Deposit&quot;. Leave
+          &quot;Stake for rewards&quot; checked for staking
+        </li>
+      </ol>
+    </div>
+ `,
   },
   {
     chain: CHAINS_ID.MATIC_MAINNET,
