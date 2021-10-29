@@ -104,7 +104,6 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'CNG', 'WETH'],
     disableAutoSwap: true,
   },
-
   UniV3_USDC_ETH_3000_4500: {
     isSingleAssetWithdrawalAllowed: true,
     isNew: true,
@@ -578,7 +577,7 @@ module.exports = {
   },
   JRT: {
     chain: CHAINS_ID.MATIC_MAINNET,
-    logoUrl: '', // not used
+    logoUrl: './icons/jrt.png',
     tokenAddress: addresses.MATIC.JRT,
     decimals: '18',
     vaultAddress: null,
@@ -4592,6 +4591,25 @@ module.exports = {
       params: ['binance-usd'],
     },
   },
+  fAUR_USDC: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: '', // unused
+    tokenAddress: addresses.MATIC.jarvis_AUR_USDC.NewVault,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.F_TOKEN,
+      params: [addresses.MATIC.jarvis_AUR_USDC.NewVault, '18', CHAINS_ID.MATIC_MAINNET],
+    },
+  },
+  fSUSHI: {
+    chain: CHAINS_ID.ETH_MAINNET,
+    logoUrl: '', // unused
+    tokenAddress: addresses.V2.SUSHI.NewVault,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.F_TOKEN, params: [addresses.V2.SUSHI.NewVault, '18'] },
+  },
   AUR: {
     chain: CHAINS_ID.MATIC_MAINNET,
     logoUrl: '', // unused
@@ -4605,7 +4623,7 @@ module.exports = {
   },
   JEUR: {
     chain: CHAINS_ID.MATIC_MAINNET,
-    logoUrl: '', // unused
+    logoUrl: './icons/jeur.png',
     tokenAddress: addresses.MATIC.JEUR,
     decimals: '18',
     vaultAddress: null,
@@ -4616,7 +4634,7 @@ module.exports = {
   },
   JCHF: {
     chain: CHAINS_ID.MATIC_MAINNET,
-    logoUrl: '', // unused
+    logoUrl: './icons/jchf.png',
     tokenAddress: addresses.MATIC.JCHF,
     decimals: '18',
     vaultAddress: null,
@@ -4627,7 +4645,7 @@ module.exports = {
   },
   JGBP: {
     chain: CHAINS_ID.MATIC_MAINNET,
-    logoUrl: '', // unused
+    logoUrl: './icons/jgbp.png',
     tokenAddress: addresses.MATIC.JGBP,
     decimals: '18',
     vaultAddress: null,
@@ -4643,6 +4661,9 @@ module.exports = {
     logoUrl: './icons/eur-usdc.png',
     apyIconUrls: ['./icons/jaur.png'],
     apyTokenSymbols: ['AUR'],
+    apyDescriptionOverride: {
+      AUR: 'Auto harvested <b>AUR</b> deposited into <b>AUR-USDC</b> for additional APY',
+    },
     displayName: 'Jarvis: EUR-USDC',
     subLabel: 'HODL',
     tokenAddress: addresses.MATIC.jarvis_JEUR_USDC_HODL.Underlying,
@@ -4654,9 +4675,9 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
+        type: 'JARVIS_HODL',
+        params: [0, 'JEUR', 'pUSDC', profitSharingCut8Percent],
         extraDailyCompound: false,
-        type: ESTIMATED_APY_TYPES.MANUAL,
-        params: ['0.00'],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'AUR'],
@@ -4668,6 +4689,9 @@ module.exports = {
     logoUrl: './icons/gbp-usdc.png',
     apyIconUrls: ['./icons/jaur.png'],
     apyTokenSymbols: ['AUR'],
+    apyDescriptionOverride: {
+      AUR: 'Auto harvested <b>AUR</b> deposited into <b>AUR-USDC</b> for additional APY',
+    },
     displayName: 'Jarvis: GBP-USDC',
     subLabel: 'HODL',
     tokenAddress: addresses.MATIC.jarvis_JGBP_USDC_HODL.Underlying,
@@ -4679,9 +4703,9 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
+        type: 'JARVIS_HODL',
+        params: [1, 'JGBP', 'pUSDC', profitSharingCut8Percent],
         extraDailyCompound: false,
-        type: ESTIMATED_APY_TYPES.MANUAL,
-        params: ['0.00'],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'AUR'],
@@ -4693,6 +4717,9 @@ module.exports = {
     logoUrl: './icons/chf-usdc.png',
     apyIconUrls: ['./icons/jaur.png'],
     apyTokenSymbols: ['AUR'],
+    apyDescriptionOverride: {
+      AUR: 'Auto harvested <b>AUR</b> deposited into <b>AUR-USDC</b> for additional APY',
+    },
     displayName: 'Jarvis: CHF-USDC',
     subLabel: 'HODL',
     tokenAddress: addresses.MATIC.jarvis_JCHF_USDC_HODL.Underlying,
@@ -4704,9 +4731,9 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
+        type: 'JARVIS_HODL',
+        params: [2, 'JCHF', 'pUSDC', profitSharingCut8Percent],
         extraDailyCompound: false,
-        type: ESTIMATED_APY_TYPES.MANUAL,
-        params: ['0.00'],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'AUR'],
@@ -4729,9 +4756,8 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
-        extraDailyCompound: false,
-        type: ESTIMATED_APY_TYPES.MANUAL,
-        params: ['0.00'],
+        type: 'JARVIS',
+        params: [3, 'AUR', 'pUSDC', profitSharingCut8Percent],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'AUR'],
