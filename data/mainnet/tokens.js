@@ -7,7 +7,10 @@ const {
   SUSHI_POOLS_IDS,
   BASIS_POOL_IDS,
 } = require('../constants')
+
 const addresses = require('./addresses.json')
+
+const IDLE_WETH_V4 = '0xc8e6ca6e96a326dc448307a5fde90a0b21fd7f80'
 
 const strat30PercentFactor = '0.7'
 const profitSharingCut8Percent = '0.92'
@@ -28,8 +31,8 @@ module.exports = {
   WETH: {
     chain: CHAINS_ID.ETH_MAINNET,
     logoUrl: './icons/eth.png',
-    apyIconUrls: ['./icons/comp.png'],
-    apyTokenSymbols: ['COMP'],
+    apyIconUrls: ['./icons/comp.png', './icons/idle.png'],
+    apyTokenSymbols: ['COMP', 'IDLE'],
     displayName: 'WETH',
     tokenAddress: addresses.WETH,
     decimals: '18',
@@ -38,8 +41,8 @@ module.exports = {
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.WETH] },
     estimateApyFunctions: [
       {
-        type: ESTIMATED_APY_TYPES.COMPOUND,
-        params: [addresses.CETH],
+        type: ESTIMATED_APY_TYPES.IDLE_FINANCE,
+        params: ['WETH', IDLE_WETH_V4, false, '0.7'],
         extraDailyCompound: false,
       },
     ],
@@ -4661,9 +4664,6 @@ module.exports = {
     logoUrl: './icons/eur-usdc.png',
     apyIconUrls: ['./icons/jaur.png'],
     apyTokenSymbols: ['AUR'],
-    apyDescriptionOverride: {
-      AUR: 'Auto harvested <b>AUR</b> deposited into <b>AUR-USDC</b> for additional APY',
-    },
     displayName: 'Jarvis: EUR-USDC',
     subLabel: 'HODL',
     tokenAddress: addresses.MATIC.jarvis_JEUR_USDC_HODL.Underlying,
@@ -4680,6 +4680,9 @@ module.exports = {
         extraDailyCompound: false,
       },
     ],
+    apyDescriptionOverride: [
+      'Auto harvested <b>AUR</b> deposited into <b>AUR-USDC</b> for more APY',
+    ],
     cmcRewardTokenSymbols: ['iFARM', 'AUR'],
   },
   jarvis_JGBP_USDC_HODL: {
@@ -4689,9 +4692,6 @@ module.exports = {
     logoUrl: './icons/gbp-usdc.png',
     apyIconUrls: ['./icons/jaur.png'],
     apyTokenSymbols: ['AUR'],
-    apyDescriptionOverride: {
-      AUR: 'Auto harvested <b>AUR</b> deposited into <b>AUR-USDC</b> for additional APY',
-    },
     displayName: 'Jarvis: GBP-USDC',
     subLabel: 'HODL',
     tokenAddress: addresses.MATIC.jarvis_JGBP_USDC_HODL.Underlying,
@@ -4708,6 +4708,9 @@ module.exports = {
         extraDailyCompound: false,
       },
     ],
+    apyDescriptionOverride: [
+      'Auto harvested <b>AUR</b> deposited into <b>AUR-USDC</b> for more APY',
+    ],
     cmcRewardTokenSymbols: ['iFARM', 'AUR'],
   },
   jarvis_JCHF_USDC_HODL: {
@@ -4717,9 +4720,6 @@ module.exports = {
     logoUrl: './icons/chf-usdc.png',
     apyIconUrls: ['./icons/jaur.png'],
     apyTokenSymbols: ['AUR'],
-    apyDescriptionOverride: {
-      AUR: 'Auto harvested <b>AUR</b> deposited into <b>AUR-USDC</b> for additional APY',
-    },
     displayName: 'Jarvis: CHF-USDC',
     subLabel: 'HODL',
     tokenAddress: addresses.MATIC.jarvis_JCHF_USDC_HODL.Underlying,
@@ -4735,6 +4735,9 @@ module.exports = {
         params: [2, 'JCHF', 'pUSDC', profitSharingCut8Percent],
         extraDailyCompound: false,
       },
+    ],
+    apyDescriptionOverride: [
+      'Auto harvested <b>AUR</b> deposited into <b>AUR-USDC</b> for more APY',
     ],
     cmcRewardTokenSymbols: ['iFARM', 'AUR'],
   },
