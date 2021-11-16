@@ -84,6 +84,7 @@ module.exports = {
   UniV3_USDC_ETH_4200_5500: {
     isSingleAssetWithdrawalAllowed: true,
     chain: CHAINS_ID.ETH_MAINNET,
+    isNew: true,
     category: VAULT_CATEGORIES_IDS.UNIV3,
     displayName: 'Uniswap V3: USDC-ETH',
     subLabel: 'ETH Range: 4.2K⟷5.5K',
@@ -113,6 +114,7 @@ module.exports = {
   UniV3_DAI_ETH_4200_5500: {
     isSingleAssetWithdrawalAllowed: true,
     chain: CHAINS_ID.ETH_MAINNET,
+    isNew: true,
     category: VAULT_CATEGORIES_IDS.UNIV3,
     displayName: 'Uniswap V3: DAI-ETH',
     subLabel: 'ETH Range: 4.2K⟷5.5K',
@@ -142,6 +144,7 @@ module.exports = {
   UniV3_ETH_USDT_4200_5500: {
     isSingleAssetWithdrawalAllowed: true,
     chain: CHAINS_ID.ETH_MAINNET,
+    isNew: true,
     category: VAULT_CATEGORIES_IDS.UNIV3,
     displayName: 'Uniswap V3: ETH-USDT',
     subLabel: 'ETH Range: 4.2K⟷5.5K',
@@ -284,7 +287,6 @@ module.exports = {
   UniV3_DON_WETH_full_range: {
     subLabel: 'Donkey',
     isDegen: true,
-    isNew: true,
     chain: CHAINS_ID.ETH_MAINNET,
     category: VAULT_CATEGORIES_IDS.UNIV3,
     displayName: 'Uniswap V3: DON-WETH (full-range)',
@@ -309,7 +311,6 @@ module.exports = {
     disableAutoSwap: true,
   },
   crvIbEUR: {
-    isNew: true,
     chain: CHAINS_ID.ETH_MAINNET,
     category: VAULT_CATEGORIES_IDS.STABLECOINS,
     displayName: 'CRV:Fixed Forex EUR',
@@ -329,7 +330,6 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'CVX', 'CRV', 'rKP3R'],
   },
   crvMIM: {
-    isNew: true,
     chain: CHAINS_ID.ETH_MAINNET,
     category: VAULT_CATEGORIES_IDS.STABLECOINS,
     displayName: 'CRV:MIM',
@@ -395,8 +395,8 @@ module.exports = {
     chain: CHAINS_ID.ETH_MAINNET,
     isNew: true,
     logoUrl: './icons/yel-eth.png',
-    apyIconUrls: [],
-    apyTokenSymbols: [],
+    apyIconUrls: ['./icons/yel.png'],
+    apyTokenSymbols: ['YEL'],
     displayName: 'YEL-ETH (SUSHI)',
     tokenAddress: addresses.V2.sushi_YEL_ETH.Underlying,
     decimals: '18',
@@ -407,9 +407,14 @@ module.exports = {
     },
     estimateApyFunctions: [
       {
+        type: 'YEL',
+        params: [
+          addresses.V2.sushi_YEL_ETH.PoolId,
+          strat30PercentFactor,
+          addresses.V2.yelhold_YEL.PoolId,
+          strat30PercentFactor,
+        ],
         extraDailyCompound: false,
-        type: ESTIMATED_APY_TYPES.MANUAL,
-        params: ['0.00'],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'YEL', 'ETH'],
@@ -811,7 +816,6 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'LUSD', 'ETH'],
   },
   Uni_FOX_WETH: {
-    isNew: true,
     chain: CHAINS_ID.ETH_MAINNET,
     category: VAULT_CATEGORIES_IDS.LIQUIDITY,
     displayName: 'Shapeshift: FOX-WETH',
@@ -1394,10 +1398,11 @@ module.exports = {
   },
   venusWBNB: {
     chain: CHAINS_ID.BSC_MAINNET,
-    category: VAULT_CATEGORIES_IDS.GENERAL,
+    category: VAULT_CATEGORIES_IDS.INACTIVE_BSC,
+    inactive: true,
     displayName: 'WBNB',
-    apyIconUrls: ['./icons/xvs.png'],
-    apyTokenSymbols: ['XVS'],
+    apyIconUrls: [],
+    apyTokenSymbols: [],
     logoUrl: './icons/venus-wbnb.png',
     tokenAddress: addresses.BSC.venus_WBNB.Underlying,
     decimals: '18',

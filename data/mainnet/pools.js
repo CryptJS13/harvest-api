@@ -951,6 +951,7 @@ module.exports = [
     rewardAPR: null,
     rewardMultiplier: 3,
     rewardTokens: [addresses.FARM],
+    vestingDescriptionOverride: { FARM: '2/3rds of <b>FARM</b> rewards are vested for 6 months' },
     rewardTokenSymbols: ['FARM'],
   },
   {
@@ -4905,7 +4906,7 @@ module.exports = [
     contractAddress: addresses.V2.sushi_YEL_ETH.NewPool,
     collateralAddress: addresses.V2.sushi_YEL_ETH.NewVault,
     rewardAPY: [],
-    rewardTokens: [addresses.iFARM, addresses.V2.yelhold_YEL.NewVault],
+    rewardTokens: [addresses.iFARM],
     rewardTokenSymbols: ['iFARM', 'fYEL'],
     stakeAndDepositHelpMessage: `
       <div class="help-message">
