@@ -5,6 +5,36 @@ const strat30PercentFactor = '0.7'
 
 module.exports = [
   {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    id: 'polygon_WETH',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.MATIC.polygon_WETH.NewPool,
+    collateralAddress: addresses.MATIC.polygon_WETH.NewVault,
+    rewardAPY: [],
+    rewardTokens: [addresses.MATIC.miFARM, addresses.MATIC.WMATIC],
+    rewardTokenSymbols: ['miFARM', 'WMATIC'],
+  },
+  {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    id: 'polygon_USDC',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.MATIC.polygon_USDC.NewPool,
+    collateralAddress: addresses.MATIC.polygon_USDC.NewVault,
+    rewardAPY: [],
+    rewardTokens: [addresses.MATIC.miFARM, addresses.MATIC.WMATIC],
+    rewardTokenSymbols: ['miFARM', 'WMATIC'],
+  },
+  {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    id: 'polygon_DAI',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.MATIC.polygon_DAI.NewPool,
+    collateralAddress: addresses.MATIC.polygon_DAI.NewVault,
+    rewardAPY: [],
+    rewardTokens: [addresses.MATIC.miFARM, addresses.MATIC.WMATIC],
+    rewardTokenSymbols: ['miFARM', 'WMATIC'],
+  },
+  {
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_USDC_ETH_4200_5500',
     tradingApyFunction: {
@@ -4066,10 +4096,6 @@ module.exports = [
   {
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_ETH_sETH2',
-    tradingApyFunction: {
-      type: TRADING_APY_TYPES.UNIV3_V3,
-      params: [addresses.V2.UniV3_ETH_sETH2.NewVault, 'UniV3_ETH_sETH2', strat30PercentFactor],
-    },
     type: POOL_TYPES.UNIV3,
     contractAddress: addresses.V2.UniV3_ETH_sETH2.NewPool,
     collateralAddress: addresses.V2.UniV3_ETH_sETH2.NewVault,
