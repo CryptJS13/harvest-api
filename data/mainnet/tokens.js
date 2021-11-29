@@ -46,6 +46,48 @@ module.exports = {
     ],
     cmcRewardTokenSymbols: ['FARM', 'WETH'],
   },
+  BABL: {
+    chain: CHAINS_ID.ETH_MAINNET,
+    logoUrl: './icons/babl.png',
+    tokenAddress: addresses.BABL,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.UNISWAP_V3,
+      params: ['BABL', 'WETH', 3000],
+    },
+  },
+  UniV3_BABL_ETH: {
+    disableAutoSwap: true,
+    isSingleAssetWithdrawalAllowed: false,
+    chain: CHAINS_ID.ETH_MAINNET,
+    isNew: true,
+    category: VAULT_CATEGORIES_IDS.UNIV3,
+    displayName: 'Uniswap V3: BABL-ETH',
+    subLabel: 'Babylon Finance',
+    apyIconUrls: ['./icons/univ3.png'],
+    apyTokenSymbols: ['UNI'],
+    logoUrl: './icons/univ3-babl-eth.png',
+    tokenAddress: addresses.V2.UniV3_BABL_ETH.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.V2.UniV3_BABL_ETH.NewVault,
+    pricesInfo: {
+      BABL: ['Min price: 1 BABL per ETH', 'Max price: 997.9 BABL per ETH'],
+      ETH: ['Min price: 0.0010021 ETH per BABL', 'Max price: 1 ETH per BABL'],
+    },
+    priceFunction: {
+      type: GET_PRICE_TYPES.LP_TOKEN,
+      params: [addresses.V2.UniV3_BABL_ETH.NewVault, 'BABL', 'WETH'],
+    },
+    estimateApyFunctions: [
+      {
+        extraDailyCompound: false,
+        type: ESTIMATED_APY_TYPES.MANUAL,
+        params: ['0.00'],
+      },
+    ],
+    cmcRewardTokenSymbols: ['iFARM', 'BABL', 'WETH'],
+  },
   DON: {
     chain: CHAINS_ID.ETH_MAINNET,
     logoUrl: './icons/don.png',
@@ -80,6 +122,7 @@ module.exports = {
     },
   },
   UniV3_USDC_ETH_4200_5500: {
+    zapFrontrunProtection: true,
     isSingleAssetWithdrawalAllowed: true,
     chain: CHAINS_ID.ETH_MAINNET,
     isNew: true,
@@ -110,6 +153,7 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'USDC', 'WETH'],
   },
   UniV3_DAI_ETH_4200_5500: {
+    zapFrontrunProtection: true,
     isSingleAssetWithdrawalAllowed: true,
     chain: CHAINS_ID.ETH_MAINNET,
     isNew: true,
@@ -140,6 +184,7 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'DAI', 'WETH'],
   },
   UniV3_ETH_USDT_4200_5500: {
+    zapFrontrunProtection: true,
     isSingleAssetWithdrawalAllowed: true,
     chain: CHAINS_ID.ETH_MAINNET,
     isNew: true,
@@ -170,7 +215,6 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'WETH', 'USDT'],
   },
   UniV3_CNG_ETH: {
-    isNew: true,
     chain: CHAINS_ID.ETH_MAINNET,
     category: VAULT_CATEGORIES_IDS.UNIV3,
     displayName: 'Uniswap V3: CNG-ETH',
@@ -196,6 +240,7 @@ module.exports = {
     disableAutoSwap: true,
   },
   UniV3_USDC_ETH_3000_4500: {
+    zapFrontrunProtection: true,
     isSingleAssetWithdrawalAllowed: true,
     chain: CHAINS_ID.ETH_MAINNET,
     category: VAULT_CATEGORIES_IDS.UNIV3,
@@ -225,6 +270,7 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'USDC', 'WETH'],
   },
   UniV3_DAI_ETH_3000_4500: {
+    zapFrontrunProtection: true,
     isSingleAssetWithdrawalAllowed: true,
     chain: CHAINS_ID.ETH_MAINNET,
     category: VAULT_CATEGORIES_IDS.UNIV3,
@@ -254,6 +300,7 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'DAI', 'WETH'],
   },
   UniV3_USDT_ETH_3000_4500: {
+    zapFrontrunProtection: true,
     isSingleAssetWithdrawalAllowed: true,
     chain: CHAINS_ID.ETH_MAINNET,
     category: VAULT_CATEGORIES_IDS.UNIV3,
@@ -435,6 +482,7 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'YEL'],
   },
   UniV3_ETH_sETH2: {
+    zapFrontrunProtection: true,
     subLabel: 'StakeWise',
     chain: CHAINS_ID.ETH_MAINNET,
     category: [VAULT_CATEGORIES_IDS.UNIV3, VAULT_CATEGORIES_IDS.ETH20],
@@ -1251,6 +1299,7 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'RENBTC', 'WBTC'],
   },
   UniV3_UST_USDT: {
+    zapFrontrunProtection: true,
     chain: CHAINS_ID.ETH_MAINNET,
     category: [VAULT_CATEGORIES_IDS.UNIV3, VAULT_CATEGORIES_IDS.STABLECOINS],
     displayName: 'Uniswap V3: UST-USDT',
@@ -1307,6 +1356,7 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'USDC', 'USDT'],
   },
   UniV3_WBTC_ETH: {
+    zapFrontrunProtection: true,
     isSingleAssetWithdrawalAllowed: true,
     chain: CHAINS_ID.ETH_MAINNET,
     category: VAULT_CATEGORIES_IDS.UNIV3,
@@ -4798,7 +4848,7 @@ module.exports = {
     vaultAddress: null,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN_THREE_WAY,
-      params: [addresses.MATIC.AUR, 'JRT', 'pUMA', 'KNC', addresses.MATIC.JARVIS_SANCTUARY],
+      params: [addresses.MATIC.AUR, 'JRT', 'pUMA', 'KNC', addresses.MATIC.JARVIS_SANCTUARY_AUR],
     },
   },
   JEUR: {
@@ -4834,6 +4884,135 @@ module.exports = {
       params: ['jarvis-synthetic-british-pound'],
     },
   },
+  DEN: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.MATIC.DEN,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.LP_TOKEN_THREE_WAY,
+      params: [addresses.MATIC.DEN, 'JRT', 'pUMA', 'pMIMO', addresses.MATIC.JARVIS_SANCTUARY_DEN],
+    },
+  },
+  pMIMO: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.MATIC.pMIMO,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['mimo-parallel-governance-token'],
+    },
+  },
+  pEURT: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.MATIC.pEURT,
+    decimals: '6',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['tether-eurt'],
+    },
+  },
+  pEURS: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.MATIC.pEURS,
+    decimals: '2',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['stasis-eurs'],
+    },
+  },
+  PAR: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: '',
+    tokenAddress: addresses.MATIC.PAR,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['par-stablecoin'],
+    },
+  },
+  fDEN_4EUR: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: '', // unused
+    tokenAddress: addresses.MATIC.jarvis_DEN_4EUR.NewVault,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.F_TOKEN,
+      params: [addresses.MATIC.jarvis_DEN_4EUR.NewVault, '18', CHAINS_ID.MATIC_MAINNET],
+    },
+  },
+  FOUR_EUR: {
+    category: VAULT_CATEGORIES_IDS.JARVIS,
+    chain: CHAINS_ID.MATIC_MAINNET,
+    isNew: true,
+    logoUrl: './icons/4eur.png',
+    apyIconUrls: ['./icons/den.png'],
+    apyTokenSymbols: ['DEN'],
+    displayName: 'Jarvis: 4EUR',
+    subLabel: 'HODL',
+    tokenAddress: addresses.MATIC.jarvis_4EUR_HODL.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.MATIC.jarvis_4EUR_HODL.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.CURVE_POOL,
+      params: [
+        addresses.MATIC.jarvis_4EUR_HODL.Underlying,
+        addresses.MATIC.jarvis_4EUR_HODL.Underlying,
+        18,
+        ['JEUR', 'pEURT', 'pEURS', 'PAR'],
+        CHAINS_ID.MATIC_MAINNET,
+      ],
+    },
+    estimateApyFunctions: [
+      {
+        type: 'JARVIS_HODL_V2',
+        params: [
+          1,
+          addresses.MATIC.jarvis_4EUR_HODL.Underlying,
+          profitSharingCut8Percent,
+          'jarvis_DEN_4EUR',
+        ],
+        extraDailyCompound: false,
+      },
+    ],
+    apyDescriptionOverride: [
+      'Auto harvested <b>DEN</b> deposited into <b>DEN-4EUR</b> for more APY',
+    ],
+    cmcRewardTokenSymbols: ['iFARM', 'DEN'],
+  },
+  jarvis_DEN_4EUR: {
+    category: VAULT_CATEGORIES_IDS.JARVIS,
+    chain: CHAINS_ID.MATIC_MAINNET,
+    isNew: true,
+    logoUrl: './icons/den-4eur.png',
+    apyIconUrls: ['./icons/den.png'],
+    apyTokenSymbols: ['DEN'],
+    displayName: 'Jarvis: DEN-4EUR',
+    subLabel: 'Auto-compounding',
+    tokenAddress: addresses.MATIC.jarvis_DEN_4EUR.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.MATIC.jarvis_DEN_4EUR.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.LP_TOKEN,
+      params: [addresses.MATIC.jarvis_DEN_4EUR.Underlying, 'DEN', 'FOUR_EUR'],
+    },
+    estimateApyFunctions: [
+      {
+        type: 'JARVIS_V2',
+        params: [0, addresses.MATIC.jarvis_DEN_4EUR.Underlying, profitSharingCut8Percent],
+      },
+    ],
+    cmcRewardTokenSymbols: ['iFARM', 'DEN'],
+  },
   jarvis_JEUR_USDC_HODL: {
     category: VAULT_CATEGORIES_IDS.JARVIS,
     chain: CHAINS_ID.MATIC_MAINNET,
@@ -4853,7 +5032,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: 'JARVIS_HODL',
-        params: [0, 'JEUR', 'pUSDC', profitSharingCut8Percent],
+        params: [0, addresses.MATIC.jarvis_JEUR_USDC_HODL.Underlying, profitSharingCut8Percent],
         extraDailyCompound: false,
       },
     ],
@@ -4881,7 +5060,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: 'JARVIS_HODL',
-        params: [1, 'JGBP', 'pUSDC', profitSharingCut8Percent],
+        params: [1, addresses.MATIC.jarvis_JGBP_USDC_HODL.Underlying, profitSharingCut8Percent],
         extraDailyCompound: false,
       },
     ],
@@ -4909,7 +5088,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: 'JARVIS_HODL',
-        params: [2, 'JCHF', 'pUSDC', profitSharingCut8Percent],
+        params: [2, addresses.MATIC.jarvis_JCHF_USDC_HODL.Underlying, profitSharingCut8Percent],
         extraDailyCompound: false,
       },
     ],
@@ -4937,7 +5116,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: 'JARVIS',
-        params: [3, 'AUR', 'pUSDC', profitSharingCut8Percent],
+        params: [3, addresses.MATIC.jarvis_AUR_USDC.Underlying, profitSharingCut8Percent],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'AUR'],
