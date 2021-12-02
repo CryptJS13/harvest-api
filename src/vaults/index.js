@@ -19,14 +19,10 @@ const {
 const { Cache } = require('../lib/db/models/cache')
 const { getUIData } = require('../lib/data')
 const { forEach } = require('promised-loops')
-const tokensFile = require('../../../tokens.json')
-const poolsFile = require('../../../pools.json')
 
 const fetchAndExpandVault = async symbol => {
-  // const tokens = await getUIData(UI_DATA_FILES.TOKENS)
-  // const pools = await getUIData(UI_DATA_FILES.POOLS)
-  const tokens = tokensFile.data
-  const pools = poolsFile.data
+  const tokens = await getUIData(UI_DATA_FILES.TOKENS)
+  const pools = await getUIData(UI_DATA_FILES.POOLS)
 
   if (DEBUG_MODE) {
     resetCallCount()
