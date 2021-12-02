@@ -14,15 +14,16 @@ const main = async () => {
   const accounts = keys.walletAddresses
   // const accounts = ["0x814055779F8d2F591277b76C724b7AdC74fb82D9"]
   console.log("Accounts:", accounts)
-  const ethPrice = await getUsdValue(['WETH'], [1])
-  const farmPrice = await getUsdValue(['FARM'], [1])
-  const iFarmPrice = await getUsdValue(['IFARM'], [1])
+  const ethPrice = await getUsdValue(['WETH'], [1], 1)
+  const farmPrice = await getUsdValue(['FARM'], [1], 1)
+  const iFarmPrice = await getUsdValue(['IFARM'], [1], 1)
   console.log("ETH price:       ", ethPrice, "usd")
   console.log("FARM price:      ", farmPrice, "usd")
   console.log("iFARM price:     ", iFarmPrice, "usd")
 
   let allStaked = 0, allRewards = 0
   const usdEUR = await getUSDEUR()
+  console.log("usdEur:          ", usdEUR)
   for (const i in accounts) {
     let account = accounts[i]
     console.log("---------------------------------------------")
@@ -42,9 +43,9 @@ const main = async () => {
       const result = await getPoolBalances(account, pool)
       if (result.balance[0]>0 || result.rewardTokens[0]) {
         console.log("Pool", j, "of", pools.length, ":", pool.id)
-        underlyingValue = await getUsdValue(result.underlying, result.balance)
+        underlyingValue = await getUsdValue(result.underlying, result.balance, pool.chain)
         console.log("Underlying value:  ", underlyingValue, "usd")
-        rewardValue = await getUsdValue(result.rewardTokens, result.rewardAmounts)
+        rewardValue = await getUsdValue(result.rewardTokens, result.rewardAmounts, pool.chain)
         console.log("Reward value:      ", rewardValue, "usd")
         totalUnderlying += underlyingValue
         totalRewards += rewardValue
@@ -69,6 +70,9 @@ const main = async () => {
     let l = 0
     let totalBalance = 0
     for (const k in tokens) {
+      if (k == 'FARMSteadUSDC') {
+        continue
+      }
       const token = tokens[k]
       const result = await getTokenBalance(account, token)
       if (result > 0) {

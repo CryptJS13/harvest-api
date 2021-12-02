@@ -36,8 +36,7 @@ const getTokenPrice = async (selectedToken, ourChainId = CHAIN_TYPES.ETH) => {
     return cachedPrice1
   }
 
-  // const tokens = await getUIData(UI_DATA_FILES.TOKENS)
-  const tokens = tokensFile.data
+  const tokens = await getUIData(UI_DATA_FILES.TOKENS)
 
   let cachedPriceKey2 = null,
     result
