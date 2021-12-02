@@ -4891,8 +4891,12 @@ module.exports = {
     decimals: '18',
     vaultAddress: null,
     priceFunction: {
-      type: GET_PRICE_TYPES.LP_TOKEN_THREE_WAY,
-      params: [addresses.MATIC.DEN, 'JRT', 'pUMA', 'pMIMO', addresses.MATIC.JARVIS_SANCTUARY_DEN],
+      type: GET_PRICE_TYPES.KYBER_PAIR,
+      params: [
+        addresses.MATIC.DEN,
+        addresses.MATIC.jarvis_4EUR_HODL.Underlying,
+        addresses.MATIC.jarvis_DEN_4EUR.Underlying,
+      ],
     },
   },
   pMIMO: {
@@ -5021,7 +5025,6 @@ module.exports = {
     apyTokenSymbols: ['AUR'],
     displayName: 'Jarvis: EUR-USDC',
     subLabel: 'HODL',
-    hideFarmApy: true,
     tokenAddress: addresses.MATIC.jarvis_JEUR_USDC_HODL.Underlying,
     decimals: '18',
     vaultAddress: addresses.MATIC.jarvis_JEUR_USDC_HODL.NewVault,
@@ -5049,7 +5052,6 @@ module.exports = {
     apyTokenSymbols: ['AUR'],
     displayName: 'Jarvis: GBP-USDC',
     subLabel: 'HODL',
-    hideFarmApy: true,
     tokenAddress: addresses.MATIC.jarvis_JGBP_USDC_HODL.Underlying,
     decimals: '18',
     vaultAddress: addresses.MATIC.jarvis_JGBP_USDC_HODL.NewVault,
@@ -5077,7 +5079,6 @@ module.exports = {
     apyTokenSymbols: ['AUR'],
     displayName: 'Jarvis: CHF-USDC',
     subLabel: 'HODL',
-    hideFarmApy: true,
     tokenAddress: addresses.MATIC.jarvis_JCHF_USDC_HODL.Underlying,
     decimals: '18',
     vaultAddress: addresses.MATIC.jarvis_JCHF_USDC_HODL.NewVault,
@@ -5105,7 +5106,6 @@ module.exports = {
     apyTokenSymbols: ['AUR'],
     displayName: 'Jarvis: AUR-USDC',
     subLabel: 'Auto-compounding',
-    hideFarmApy: true,
     tokenAddress: addresses.MATIC.jarvis_AUR_USDC.Underlying,
     decimals: '18',
     vaultAddress: addresses.MATIC.jarvis_AUR_USDC.NewVault,
@@ -5131,7 +5131,6 @@ module.exports = {
     subLabel: 'WMATIC: 25%, USDC: 25%, WETH: 25%, BAL: 25%',
     tokenAddress: addresses.MATIC.balancer_POLYBASE.Underlying,
     decimals: '18',
-    hideFarmApy: true,
     vaultAddress: addresses.MATIC.balancer_POLYBASE.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.BALANCER,
@@ -5165,7 +5164,6 @@ module.exports = {
     subLabel: 'WBTC: 33%, USDC: 33%, WETH: 33%',
     tokenAddress: addresses.MATIC.balancer_TRICRYPTO.Underlying,
     decimals: '18',
-    hideFarmApy: true,
     vaultAddress: addresses.MATIC.balancer_TRICRYPTO.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.BALANCER,
@@ -5199,7 +5197,6 @@ module.exports = {
     subLabel: 'USDC, DAI, miMATIC, USDT',
     tokenAddress: addresses.MATIC.balancer_STABLE.Underlying,
     decimals: '18',
-    hideFarmApy: true,
     vaultAddress: addresses.MATIC.balancer_STABLE.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.BALANCER,
