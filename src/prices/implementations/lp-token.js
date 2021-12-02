@@ -10,14 +10,12 @@ const { getPositions } = require('../../lib/web3/contracts/uni-non-fungible-mana
 const { token: tokenContractData } = require('../../lib/web3/contracts')
 const { CHAIN_TYPES, UI_DATA_FILES } = require('../../lib/constants')
 const { getUIData } = require('../../lib/data')
-const tokensFile = require('../../../../tokens.json')
 
 const { getPosId } = require('./uniswap-v3.js')
 const { getTokenPrice } = require('..')
 
 const getPrice = async (contractAddress, firstToken, secondToken) => {
-  // const tokens = await getUIData(UI_DATA_FILES.TOKENS)
-  const tokens = tokensFile.data
+  const tokens = await getUIData(UI_DATA_FILES.TOKENS)
   const {
     methods: { getTotalSupply, getBalance },
     contract: { abi },

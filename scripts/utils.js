@@ -82,10 +82,10 @@ async function getPoolBalances(account, pool) {
   return {underlying: [pool.collateralAddress], balance: [balance], rewardTokens: tokens, rewardAmounts: amounts}
 }
 
-async function getUsdValue(tokens, amounts) {
+async function getUsdValue(tokens, amounts, chain) {
   let value = 0
   for (let i = 0; i < tokens.length; i++) {
-    let price = await getTokenPrice(tokens[i])
+    let price = await getTokenPrice(tokens[i], chain)
     let tokenValue = price * amounts[i]
     value = value + tokenValue
   }
