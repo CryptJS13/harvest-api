@@ -542,12 +542,12 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/quickswap-ifarm-quick.png',
-    tokenAddress: addresses.MATIC.quickswap_IFARM_QUICK.Underlying,
+    tokenAddress: addresses.MATIC.V2.quickswap_IFARM_QUICK.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.quickswap_IFARM_QUICK.NewVault,
+    vaultAddress: addresses.MATIC.V2.quickswap_IFARM_QUICK.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.MATIC.quickswap_IFARM_QUICK.Underlying, 'miFARM', 'QUICK'],
+      params: [addresses.MATIC.V2.quickswap_IFARM_QUICK.Underlying, 'miFARM', 'QUICK'],
     },
     estimateApyFunctions: [
       {
@@ -565,18 +565,18 @@ module.exports = {
     apyIconUrls: ['./icons/quick.png'],
     apyTokenSymbols: ['dQUICK'],
     logoUrl: './icons/quickswap-eth-usdt.png',
-    tokenAddress: addresses.MATIC.quickswap_ETH_USDT.Underlying,
+    tokenAddress: addresses.MATIC.V2.quickswap_ETH_USDT.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.quickswap_ETH_USDT.NewVault,
+    vaultAddress: addresses.MATIC.V2.quickswap_ETH_USDT.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.MATIC.quickswap_ETH_USDT.Underlying, 'pWETH', 'pUSDT'],
+      params: [addresses.MATIC.V2.quickswap_ETH_USDT.Underlying, 'pWETH', 'pUSDT'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.SNX,
         params: [
-          addresses.MATIC.quickswap_ETH_USDT.RewardPool,
+          addresses.MATIC.V2.quickswap_ETH_USDT.RewardPool,
           'dQUICK',
           'quick_ETH_USDT',
           profitSharingCut8Percent,
@@ -592,18 +592,18 @@ module.exports = {
     apyIconUrls: ['./icons/sushi.png'],
     apyTokenSymbols: ['SUSHI'],
     displayName: 'Sushiswap: USDC-ETH',
-    tokenAddress: addresses.MATIC.sushiswap_USDC_ETH.Underlying,
+    tokenAddress: addresses.MATIC.V2.sushiswap_USDC_ETH.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.sushiswap_USDC_ETH.NewVault,
+    vaultAddress: addresses.MATIC.V2.sushiswap_USDC_ETH.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.MATIC.sushiswap_USDC_ETH.Underlying, 'pUSDC', 'pWETH'],
+      params: [addresses.MATIC.V2.sushiswap_USDC_ETH.Underlying, 'pUSDC', 'pWETH'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.SUSHI,
         params: [
-          addresses.MATIC.sushiswap_USDC_ETH.PoolId,
+          addresses.MATIC.V2.sushiswap_USDC_ETH.PoolId,
           'pUSDC',
           'pWETH',
           profitSharingCut8Percent,
@@ -622,9 +622,9 @@ module.exports = {
     apyTokenSymbols: ['WMATIC'],
     displayName: 'WETH',
     subLabel: 'IDLE',
-    tokenAddress: addresses.MATIC.polygon_WETH.Underlying,
+    tokenAddress: addresses.MATIC.V2.polygon_WETH.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.polygon_WETH.NewVault,
+    vaultAddress: addresses.MATIC.V2.polygon_WETH.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.COINGECKO_CONTRACT,
       params: [addresses.WETH],
@@ -662,9 +662,9 @@ module.exports = {
     apyTokenSymbols: ['WMATIC'],
     displayName: 'USDC',
     subLabel: 'IDLE',
-    tokenAddress: addresses.MATIC.polygon_USDC.Underlying,
+    tokenAddress: addresses.MATIC.V2.polygon_USDC.Underlying,
     decimals: '6',
-    vaultAddress: addresses.MATIC.polygon_USDC.NewVault,
+    vaultAddress: addresses.MATIC.V2.polygon_USDC.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.COINGECKO_CONTRACT,
       params: [addresses.USDC],
@@ -691,9 +691,9 @@ module.exports = {
     apyTokenSymbols: ['WMATIC'],
     displayName: 'DAI',
     subLabel: 'IDLE',
-    tokenAddress: addresses.MATIC.polygon_DAI.Underlying,
+    tokenAddress: addresses.MATIC.V2.polygon_DAI.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.polygon_DAI.NewVault,
+    vaultAddress: addresses.MATIC.V2.polygon_DAI.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.COINGECKO_CONTRACT,
       params: [addresses.DAI],
@@ -1367,7 +1367,6 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'USDC', 'USDT'],
   },
   UniV3_WBTC_ETH: {
-    zapFrontrunProtection: true,
     isSingleAssetWithdrawalAllowed: true,
     chain: CHAINS_ID.ETH_MAINNET,
     category: VAULT_CATEGORIES_IDS.UNIV3,
@@ -1525,9 +1524,9 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/venus-wbnb.png',
-    tokenAddress: addresses.BSC.venus_WBNB.Underlying,
+    tokenAddress: addresses.BSC.V2.venus_WBNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.venus_WBNB.NewVault,
+    vaultAddress: addresses.BSC.V2.venus_WBNB.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_ID, params: ['wbnb'] },
     estimateApyFunctions: [
       {
@@ -1560,14 +1559,14 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/belt-bnb.png',
-    tokenAddress: addresses.BSC.belt_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.belt_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.belt_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.belt_BNB.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_ID, params: ['wbnb'] },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.BELT,
-        params: [addresses.BSC.belt_BNB.PoolId, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.belt_BNB.PoolId, profitSharingCut8Percent],
       },
     ],
   },
@@ -1579,14 +1578,14 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/belt-eth.png',
-    tokenAddress: addresses.BSC.belt_ETH.Underlying,
+    tokenAddress: addresses.BSC.V2.belt_ETH.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.belt_ETH.NewVault,
+    vaultAddress: addresses.BSC.V2.belt_ETH.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.WETH] },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.BELT,
-        params: [addresses.BSC.belt_ETH.PoolId, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.belt_ETH.PoolId, profitSharingCut8Percent],
       },
     ],
   },
@@ -1598,14 +1597,14 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/belt-btcb.png',
-    tokenAddress: addresses.BSC.belt_BTCB.Underlying,
+    tokenAddress: addresses.BSC.V2.belt_BTCB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.belt_BTCB.NewVault,
+    vaultAddress: addresses.BSC.V2.belt_BTCB.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.WBTC] },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.BELT,
-        params: [addresses.BSC.belt_BTCB.PoolId, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.belt_BTCB.PoolId, profitSharingCut8Percent],
       },
     ],
   },
@@ -1616,17 +1615,17 @@ module.exports = {
     apyIconUrls: ['./icons/belt.png'],
     apyTokenSymbols: ['BELT'],
     logoUrl: './icons/belt-belt-bnb.png',
-    tokenAddress: addresses.BSC.belt_BELT_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.belt_BELT_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.belt_BELT_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.belt_BELT_BNB.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.belt_BELT_BNB.Underlying, 'BELT', 'wBNB'],
+      params: [addresses.BSC.V2.belt_BELT_BNB.Underlying, 'BELT', 'wBNB'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.BELT,
-        params: [addresses.BSC.belt_BELT_BNB.PoolId, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.belt_BELT_BNB.PoolId, profitSharingCut8Percent],
       },
     ],
   },
@@ -1637,17 +1636,17 @@ module.exports = {
     apyIconUrls: ['./icons/ice.png'],
     apyTokenSymbols: ['ICE'],
     logoUrl: './icons/ice-bnb.png',
-    tokenAddress: addresses.BSC.popsicle_ICE_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.popsicle_ICE_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.popsicle_ICE_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.popsicle_ICE_BNB.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.popsicle_ICE_BNB.Underlying, 'ICE', 'wBNB'],
+      params: [addresses.BSC.V2.popsicle_ICE_BNB.Underlying, 'ICE', 'wBNB'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.POPSICLE,
-        params: [addresses.BSC.popsicle_ICE_BNB.PoolId, 'ICE', 'wBNB', profitSharingCut8Percent],
+        params: [addresses.BSC.V2.popsicle_ICE_BNB.PoolId, 'ICE', 'wBNB', profitSharingCut8Percent],
       },
     ],
   },
@@ -2989,17 +2988,22 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/pancake-busd-bnb.png',
-    tokenAddress: addresses.BSC.pancake_BUSD_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.pancake_BUSD_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.pancake_BUSD_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.pancake_BUSD_BNB.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.pancake_BUSD_BNB.Underlying, 'bUSD', 'wBNB'],
+      params: [addresses.BSC.V2.pancake_BUSD_BNB.Underlying, 'bUSD', 'wBNB'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.PANCAKE,
-        params: [addresses.BSC.pancake_BUSD_BNB.PoolId, 'bUSD', 'wBNB', profitSharingCut8Percent],
+        params: [
+          addresses.BSC.V2.pancake_BUSD_BNB.PoolId,
+          'bUSD',
+          'wBNB',
+          profitSharingCut8Percent,
+        ],
       },
     ],
   },
@@ -3010,14 +3014,14 @@ module.exports = {
     apyIconUrls: ['./icons/cake.png'],
     apyTokenSymbols: ['CAKE'],
     logoUrl: './icons/cake.png',
-    tokenAddress: addresses.BSC.pancake_CAKE.Underlying,
+    tokenAddress: addresses.BSC.V2.pancake_CAKE.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.pancake_CAKE.NewVault,
+    vaultAddress: addresses.BSC.V2.pancake_CAKE.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_ID, params: ['pancakeswap-token'] },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.PANCAKE,
-        params: [addresses.BSC.pancake_CAKE.PoolId, null, null, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.pancake_CAKE.PoolId, null, null, profitSharingCut8Percent],
       },
     ],
   },
@@ -3029,17 +3033,17 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/pancake-eth-bnb.png',
-    tokenAddress: addresses.BSC.pancake_ETH_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.pancake_ETH_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.pancake_ETH_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.pancake_ETH_BNB.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.pancake_ETH_BNB.Underlying, 'bETH', 'wBNB'],
+      params: [addresses.BSC.V2.pancake_ETH_BNB.Underlying, 'bETH', 'wBNB'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.PANCAKE,
-        params: [addresses.BSC.pancake_ETH_BNB.PoolId, 'bETH', 'wBNB', profitSharingCut8Percent],
+        params: [addresses.BSC.V2.pancake_ETH_BNB.PoolId, 'bETH', 'wBNB', profitSharingCut8Percent],
       },
     ],
   },
@@ -3050,17 +3054,22 @@ module.exports = {
     apyIconUrls: ['./icons/cake.png'],
     apyTokenSymbols: ['CAKE'],
     logoUrl: './icons/pancake-usdt-bnb.png',
-    tokenAddress: addresses.BSC.pancake_USDT_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.pancake_USDT_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.pancake_USDT_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.pancake_USDT_BNB.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.pancake_USDT_BNB.Underlying, 'bUSDT', 'wBNB'],
+      params: [addresses.BSC.V2.pancake_USDT_BNB.Underlying, 'bUSDT', 'wBNB'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.PANCAKE,
-        params: [addresses.BSC.pancake_USDT_BNB.PoolId, 'bUSDT', 'wBNB', profitSharingCut8Percent],
+        params: [
+          addresses.BSC.V2.pancake_USDT_BNB.PoolId,
+          'bUSDT',
+          'wBNB',
+          profitSharingCut8Percent,
+        ],
       },
     ],
   },
@@ -3072,17 +3081,17 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/pancake-xvs-bnb.png',
-    tokenAddress: addresses.BSC.pancake_XVS_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.pancake_XVS_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.pancake_XVS_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.pancake_XVS_BNB.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.pancake_XVS_BNB.Underlying, 'XVS', 'wBNB'],
+      params: [addresses.BSC.V2.pancake_XVS_BNB.Underlying, 'XVS', 'wBNB'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.PANCAKE,
-        params: [addresses.BSC.pancake_XVS_BNB.PoolId, 'XVS', 'wBNB', profitSharingCut8Percent],
+        params: [addresses.BSC.V2.pancake_XVS_BNB.PoolId, 'XVS', 'wBNB', profitSharingCut8Percent],
       },
     ],
   },
@@ -3093,17 +3102,22 @@ module.exports = {
     apyIconUrls: ['./icons/cake.png'],
     apyTokenSymbols: ['CAKE'],
     logoUrl: './icons/pancake-cake-bnb.png',
-    tokenAddress: addresses.BSC.pancake_CAKE_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.pancake_CAKE_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.pancake_CAKE_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.pancake_CAKE_BNB.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.pancake_CAKE_BNB.Underlying, 'CAKE', 'wBNB'],
+      params: [addresses.BSC.V2.pancake_CAKE_BNB.Underlying, 'CAKE', 'wBNB'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.PANCAKE,
-        params: [addresses.BSC.pancake_CAKE_BNB.PoolId, 'CAKE', 'wBNB', profitSharingCut8Percent],
+        params: [
+          addresses.BSC.V2.pancake_CAKE_BNB.PoolId,
+          'CAKE',
+          'wBNB',
+          profitSharingCut8Percent,
+        ],
       },
     ],
   },
@@ -3115,9 +3129,9 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/dai.png',
-    tokenAddress: addresses.BSC.venus_DAI.Underlying,
+    tokenAddress: addresses.BSC.V2.venus_DAI.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.venus_DAI.NewVault,
+    vaultAddress: addresses.BSC.V2.venus_DAI.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.DAI] },
     estimateApyFunctions: [
       {
@@ -3134,9 +3148,9 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/usdc.png',
-    tokenAddress: addresses.BSC.venus_USDC.Underlying,
+    tokenAddress: addresses.BSC.V2.venus_USDC.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.venus_USDC.NewVault,
+    vaultAddress: addresses.BSC.V2.venus_USDC.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.USDC] },
     estimateApyFunctions: [
       {
@@ -3153,9 +3167,9 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/usdt.png',
-    tokenAddress: addresses.BSC.venus_USDT.Underlying,
+    tokenAddress: addresses.BSC.V2.venus_USDT.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.venus_USDT.NewVault,
+    vaultAddress: addresses.BSC.V2.venus_USDT.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.USDT] },
     estimateApyFunctions: [
       {
@@ -3172,9 +3186,9 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/venus-busd.png',
-    tokenAddress: addresses.BSC.venus_BUSD.Underlying,
+    tokenAddress: addresses.BSC.V2.venus_BUSD.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.venus_BUSD.NewVault,
+    vaultAddress: addresses.BSC.V2.venus_BUSD.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_ID, params: ['binance-usd'] },
     estimateApyFunctions: [
       {
@@ -3191,9 +3205,9 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/venus-xvs.png',
-    tokenAddress: addresses.BSC.venus_XVS.Underlying,
+    tokenAddress: addresses.BSC.V2.venus_XVS.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.venus_XVS.NewVault,
+    vaultAddress: addresses.BSC.V2.venus_XVS.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_ID, params: ['venus'] },
     estimateApyFunctions: [
       {
@@ -3210,14 +3224,14 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/venus-vai.png',
-    tokenAddress: addresses.BSC.venus_VAI.Underlying,
+    tokenAddress: addresses.BSC.V2.venus_VAI.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.venus_VAI.NewVault,
+    vaultAddress: addresses.BSC.V2.venus_VAI.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_ID, params: ['vai'] },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.VENUS_VAI_STAKING,
-        params: [addresses.BSC.venus_VAI.RewardPool, '499.99', profitSharingCut8Percent],
+        params: [addresses.BSC.V2.venus_VAI.RewardPool, '499.99', profitSharingCut8Percent],
       },
     ],
   },
@@ -3229,9 +3243,9 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/venus-beth.png',
-    tokenAddress: addresses.BSC.venus_BETH.Underlying,
+    tokenAddress: addresses.BSC.V2.venus_BETH.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.venus_BETH.NewVault,
+    vaultAddress: addresses.BSC.V2.venus_BETH.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_ID, params: ['weth'] },
     estimateApyFunctions: [
       {
@@ -3248,9 +3262,9 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/venus-eth.png',
-    tokenAddress: addresses.BSC.venus_ETH.Underlying,
+    tokenAddress: addresses.BSC.V2.venus_ETH.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.venus_ETH.NewVault,
+    vaultAddress: addresses.BSC.V2.venus_ETH.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_ID, params: ['weth'] }, // Should be ok since its pegged to ETH price
     estimateApyFunctions: [
       {
@@ -3267,9 +3281,9 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/venus-btcb.png',
-    tokenAddress: addresses.BSC.venus_BTCB.Underlying,
+    tokenAddress: addresses.BSC.V2.venus_BTCB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.venus_BTCB.NewVault,
+    vaultAddress: addresses.BSC.V2.venus_BTCB.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.WBTC] },
     estimateApyFunctions: [
       {
@@ -3346,17 +3360,17 @@ module.exports = {
     apyIconUrls: ['./icons/egg.png'],
     apyTokenSymbols: ['EGG'],
     logoUrl: './icons/egg-bnb.png',
-    tokenAddress: addresses.BSC.goose_EGG_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.goose_EGG_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.goose_EGG_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.goose_EGG_BNB.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.goose_EGG_BNB.Underlying, 'EGG', 'wBNB'],
+      params: [addresses.BSC.V2.goose_EGG_BNB.Underlying, 'EGG', 'wBNB'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.GOOSE,
-        params: [addresses.BSC.goose_EGG_BNB.PoolId, 'EGG', 'wBNB', profitSharingCut8Percent],
+        params: [addresses.BSC.V2.goose_EGG_BNB.PoolId, 'EGG', 'wBNB', profitSharingCut8Percent],
       },
     ],
   },
@@ -3367,17 +3381,17 @@ module.exports = {
     apyIconUrls: ['./icons/egg.png'],
     apyTokenSymbols: ['EGG'],
     logoUrl: './icons/egg-busd.png',
-    tokenAddress: addresses.BSC.goose_EGG_BUSD.Underlying,
+    tokenAddress: addresses.BSC.V2.goose_EGG_BUSD.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.goose_EGG_BUSD.NewVault,
+    vaultAddress: addresses.BSC.V2.goose_EGG_BUSD.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.goose_EGG_BUSD.Underlying, 'EGG', 'bUSD'],
+      params: [addresses.BSC.V2.goose_EGG_BUSD.Underlying, 'EGG', 'bUSD'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.GOOSE,
-        params: [addresses.BSC.goose_EGG_BUSD.PoolId, 'EGG', 'bUSD', profitSharingCut8Percent],
+        params: [addresses.BSC.V2.goose_EGG_BUSD.PoolId, 'EGG', 'bUSD', profitSharingCut8Percent],
       },
     ],
   },
@@ -3770,14 +3784,14 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/eps-3pool.png',
-    tokenAddress: addresses.BSC.ellipsis_3pool.Underlying,
+    tokenAddress: addresses.BSC.V2.ellipsis_3pool.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.ellipsis_3pool.NewVault,
+    vaultAddress: addresses.BSC.V2.ellipsis_3pool.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.MANUAL, params: ['1'] },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.ELLIPSIS,
-        params: [addresses.BSC.ellipsis_3pool.PoolId, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.ellipsis_3pool.PoolId, profitSharingCut8Percent],
       },
     ],
   },
@@ -3788,17 +3802,17 @@ module.exports = {
     apyIconUrls: ['./icons/eps.png'],
     apyTokenSymbols: ['EPS'],
     logoUrl: './icons/eps-bnb.png',
-    tokenAddress: addresses.BSC.ellipsis_EPS_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.ellipsis_EPS_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.ellipsis_EPS_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.ellipsis_EPS_BNB.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.ellipsis_EPS_BNB.Underlying, 'EPS', 'wBNB'],
+      params: [addresses.BSC.V2.ellipsis_EPS_BNB.Underlying, 'EPS', 'wBNB'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.ELLIPSIS,
-        params: [addresses.BSC.ellipsis_EPS_BNB.PoolId, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.ellipsis_EPS_BNB.PoolId, profitSharingCut8Percent],
       },
     ],
   },
@@ -3810,17 +3824,22 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/space-bnb.png',
-    tokenAddress: addresses.BSC.space_SPACE_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.space_SPACE_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.space_SPACE_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.space_SPACE_BNB.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.space_SPACE_BNB.Underlying, 'SPACE', 'wBNB'],
+      params: [addresses.BSC.V2.space_SPACE_BNB.Underlying, 'SPACE', 'wBNB'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.SPACE,
-        params: [addresses.BSC.space_SPACE_BNB.PoolId, 'SPACE', 'wBNB', profitSharingCut8Percent],
+        params: [
+          addresses.BSC.V2.space_SPACE_BNB.PoolId,
+          'SPACE',
+          'wBNB',
+          profitSharingCut8Percent,
+        ],
       },
     ],
   },
@@ -3832,17 +3851,22 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/space-busd.png',
-    tokenAddress: addresses.BSC.space_SPACE_BUSD.Underlying,
+    tokenAddress: addresses.BSC.V2.space_SPACE_BUSD.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.space_SPACE_BUSD.NewVault,
+    vaultAddress: addresses.BSC.V2.space_SPACE_BUSD.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.space_SPACE_BUSD.Underlying, 'SPACE', 'bUSD'],
+      params: [addresses.BSC.V2.space_SPACE_BUSD.Underlying, 'SPACE', 'bUSD'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.SPACE,
-        params: [addresses.BSC.space_SPACE_BUSD.PoolId, 'SPACE', 'bUSD', profitSharingCut8Percent],
+        params: [
+          addresses.BSC.V2.space_SPACE_BUSD.PoolId,
+          'SPACE',
+          'bUSD',
+          profitSharingCut8Percent,
+        ],
       },
     ],
   },
@@ -3854,9 +3878,9 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/eps-fusdt.png',
-    tokenAddress: addresses.BSC.ellipsis_FUSDT.Underlying,
+    tokenAddress: addresses.BSC.V2.ellipsis_FUSDT.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.ellipsis_FUSDT.NewVault,
+    vaultAddress: addresses.BSC.V2.ellipsis_FUSDT.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.MANUAL,
       params: ['1'],
@@ -3864,7 +3888,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.ELLIPSIS,
-        params: [addresses.BSC.ellipsis_FUSDT.PoolId, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.ellipsis_FUSDT.PoolId, profitSharingCut8Percent],
       },
     ],
   },
@@ -3875,9 +3899,9 @@ module.exports = {
     apyIconUrls: ['./icons/eps.png'],
     apyTokenSymbols: ['EPS'],
     logoUrl: './icons/eps-btc.png',
-    tokenAddress: addresses.BSC.ellipsis_BTC.Underlying,
+    tokenAddress: addresses.BSC.V2.ellipsis_BTC.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.ellipsis_BTC.NewVault,
+    vaultAddress: addresses.BSC.V2.ellipsis_BTC.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.COINGECKO_ID,
       params: ['renbtc'],
@@ -3885,7 +3909,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.ELLIPSIS,
-        params: [addresses.BSC.ellipsis_BTC.PoolId, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.ellipsis_BTC.PoolId, profitSharingCut8Percent],
       },
     ],
   },
@@ -4468,14 +4492,14 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/egg.png',
-    tokenAddress: addresses.BSC.goose_EGG.Underlying,
+    tokenAddress: addresses.BSC.V2.goose_EGG.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.goose_EGG.NewVault,
+    vaultAddress: addresses.BSC.V2.goose_EGG.NewVault,
     priceFunction: { type: GET_PRICE_TYPES.COINGECKO_ID, params: ['goose-finance'] },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.GOOSE,
-        params: [addresses.BSC.goose_EGG.PoolId, null, null, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.goose_EGG.PoolId, null, null, profitSharingCut8Percent],
       },
     ],
   },
@@ -4486,19 +4510,19 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/1inch-1inch-bnb.png',
-    tokenAddress: addresses.BSC.oneInch_1INCH_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.oneInch_1INCH_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.oneInch_1INCH_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.oneInch_1INCH_BNB.NewVault,
     inactive: true,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.oneInch_1INCH_BNB.Underlying, 'b1INCH', 'BNB'],
+      params: [addresses.BSC.V2.oneInch_1INCH_BNB.Underlying, 'b1INCH', 'BNB'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.SNX,
         params: [
-          addresses.BSC.oneInch_1INCH_BNB.RewardPool,
+          addresses.BSC.V2.oneInch_1INCH_BNB.RewardPool,
           'b1INCH',
           '1INCH-1INCH-BNB',
           profitSharingCut8Percent,
@@ -4514,20 +4538,20 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/1inch-1inch-renbtc.png',
-    tokenAddress: addresses.BSC.oneInch_1INCH_renBTC.Underlying,
+    tokenAddress: addresses.BSC.V2.oneInch_1INCH_renBTC.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.oneInch_1INCH_renBTC.NewVault,
+    vaultAddress: addresses.BSC.V2.oneInch_1INCH_renBTC.NewVault,
     inactive: true,
     hideFarmSymbol: true,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.oneInch_1INCH_renBTC.Underlying, 'b1INCH', 'bRENBTC'],
+      params: [addresses.BSC.V2.oneInch_1INCH_renBTC.Underlying, 'b1INCH', 'bRENBTC'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.ONEINCH,
         params: [
-          addresses.BSC.oneInch_1INCH_renBTC.RewardPool,
+          addresses.BSC.V2.oneInch_1INCH_renBTC.RewardPool,
           'b1INCH',
           '1INCH-1INCH-RENBTC',
           profitSharingCut8Percent,
@@ -4589,17 +4613,17 @@ module.exports = {
     apyTokenSymbols: [],
     displayName: 'BDO-BNB',
     logoUrl: './icons/bdo-bdo-bnb.png',
-    tokenAddress: addresses.BSC.bdo_BDO_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.bdo_BDO_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.bdo_BDO_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.bdo_BDO_BNB.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.bdo_BDO_BNB.Underlying, 'BDO', 'wBNB'],
+      params: [addresses.BSC.V2.bdo_BDO_BNB.Underlying, 'BDO', 'wBNB'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.BDO,
-        params: [addresses.BSC.bdo_BDO_BNB.poolId, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.bdo_BDO_BNB.poolId, profitSharingCut8Percent],
       },
     ],
   },
@@ -4611,17 +4635,17 @@ module.exports = {
     apyTokenSymbols: [],
     displayName: 'BDO-BUSD',
     logoUrl: './icons/bdo-bdo-busd.png',
-    tokenAddress: addresses.BSC.bdo_BDO_BUSD.Underlying,
+    tokenAddress: addresses.BSC.V2.bdo_BDO_BUSD.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.bdo_BDO_BUSD.NewVault,
+    vaultAddress: addresses.BSC.V2.bdo_BDO_BUSD.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.bdo_BDO_BUSD.Underlying, 'BDO', 'bUSD'],
+      params: [addresses.BSC.V2.bdo_BDO_BUSD.Underlying, 'BDO', 'bUSD'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.BDO,
-        params: [addresses.BSC.bdo_BDO_BUSD.poolId, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.bdo_BDO_BUSD.poolId, profitSharingCut8Percent],
       },
     ],
   },
@@ -4633,17 +4657,17 @@ module.exports = {
     apyTokenSymbols: [],
     displayName: 'SBDO-BUSD',
     logoUrl: './icons/bdo-sbdo-busd.png',
-    tokenAddress: addresses.BSC.bdo_SBDO_BUSD.Underlying,
+    tokenAddress: addresses.BSC.V2.bdo_SBDO_BUSD.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.bdo_SBDO_BUSD.NewVault,
+    vaultAddress: addresses.BSC.V2.bdo_SBDO_BUSD.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.bdo_SBDO_BUSD.Underlying, 'sBDO', 'bUSD'],
+      params: [addresses.BSC.V2.bdo_SBDO_BUSD.Underlying, 'sBDO', 'bUSD'],
     },
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.BDO,
-        params: [addresses.BSC.bdo_SBDO_BUSD.poolId, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.bdo_SBDO_BUSD.poolId, profitSharingCut8Percent],
       },
     ],
   },
@@ -4654,9 +4678,9 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/belt-venus.png',
-    tokenAddress: addresses.BSC.belt_Venus.Underlying,
+    tokenAddress: addresses.BSC.V2.belt_Venus.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.belt_Venus.NewVault,
+    vaultAddress: addresses.BSC.V2.belt_Venus.NewVault,
     inactive: true,
     priceFunction: {
       type: GET_PRICE_TYPES.MANUAL,
@@ -4665,7 +4689,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.BELT,
-        params: [addresses.BSC.belt_Venus.PoolId, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.belt_Venus.PoolId, profitSharingCut8Percent],
       },
     ],
   },
@@ -4685,12 +4709,12 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/swirl-bnb.png',
-    tokenAddress: addresses.BSC.swirl_SWIRL_BNB.Underlying,
+    tokenAddress: addresses.BSC.V2.swirl_SWIRL_BNB.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.swirl_SWIRL_BNB.NewVault,
+    vaultAddress: addresses.BSC.V2.swirl_SWIRL_BNB.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.BSC.swirl_SWIRL_BNB.Underlying, 'SWIRL', 'wBNB'],
+      params: [addresses.BSC.V2.swirl_SWIRL_BNB.Underlying, 'SWIRL', 'wBNB'],
     },
     estimateApyFunctions: [
       {
@@ -4706,9 +4730,9 @@ module.exports = {
     apyIconUrls: [],
     apyTokenSymbols: [],
     logoUrl: './icons/ice.png',
-    tokenAddress: addresses.BSC.popsicle_ICE.Underlying,
+    tokenAddress: addresses.BSC.V2.popsicle_ICE.Underlying,
     decimals: '18',
-    vaultAddress: addresses.BSC.popsicle_ICE.NewVault,
+    vaultAddress: addresses.BSC.V2.popsicle_ICE.NewVault,
     inactive: true,
     hideFarmSymbol: true,
     priceFunction: {
@@ -4718,7 +4742,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.POPSICLE,
-        params: [addresses.BSC.popsicle_ICE.PoolId, null, null, profitSharingCut8Percent],
+        params: [addresses.BSC.V2.popsicle_ICE.PoolId, null, null, profitSharingCut8Percent],
       },
     ],
   },
@@ -4835,12 +4859,12 @@ module.exports = {
   fAUR0112_USDC: {
     chain: CHAINS_ID.MATIC_MAINNET,
     logoUrl: '', // unused
-    tokenAddress: addresses.MATIC.jarvis_AUR_USDC.NewVault,
+    tokenAddress: addresses.MATIC.V2.jarvis_AUR_USDC.NewVault,
     decimals: '18',
     vaultAddress: null,
     priceFunction: {
       type: GET_PRICE_TYPES.F_TOKEN,
-      params: [addresses.MATIC.jarvis_AUR_USDC.NewVault, '18', CHAINS_ID.MATIC_MAINNET],
+      params: [addresses.MATIC.V2.jarvis_AUR_USDC.NewVault, '18', CHAINS_ID.MATIC_MAINNET],
     },
   },
   fSUSHI: {
@@ -4911,8 +4935,8 @@ module.exports = {
       type: GET_PRICE_TYPES.KYBER_PAIR,
       params: [
         addresses.MATIC.DEN,
-        addresses.MATIC.jarvis_4EUR_HODL.Underlying,
-        addresses.MATIC.jarvis_DEN_4EUR.Underlying,
+        addresses.MATIC.V2.jarvis_4EUR_HODL.Underlying,
+        addresses.MATIC.V2.jarvis_DEN_4EUR.Underlying,
       ],
     },
   },
@@ -4963,23 +4987,23 @@ module.exports = {
   fDEN_4EUR: {
     chain: CHAINS_ID.MATIC_MAINNET,
     logoUrl: '', // unused
-    tokenAddress: addresses.MATIC.jarvis_DEN_4EUR.NewVault,
+    tokenAddress: addresses.MATIC.V2.jarvis_DEN_4EUR.NewVault,
     decimals: '18',
     vaultAddress: null,
     priceFunction: {
       type: GET_PRICE_TYPES.F_TOKEN,
-      params: [addresses.MATIC.jarvis_DEN_4EUR.NewVault, '18', CHAINS_ID.MATIC_MAINNET],
+      params: [addresses.MATIC.V2.jarvis_DEN_4EUR.NewVault, '18', CHAINS_ID.MATIC_MAINNET],
     },
   },
   fAURFEB22_USDC: {
     chain: CHAINS_ID.MATIC_MAINNET,
     logoUrl: '', // unused
-    tokenAddress: addresses.MATIC.jarvis_AUR_USDC_V2.NewVault,
+    tokenAddress: addresses.MATIC.V2.jarvis_AUR_USDC_V2.NewVault,
     decimals: '18',
     vaultAddress: null,
     priceFunction: {
       type: GET_PRICE_TYPES.F_TOKEN,
-      params: [addresses.MATIC.jarvis_AUR_USDC_V2.NewVault, '18', CHAINS_ID.MATIC_MAINNET],
+      params: [addresses.MATIC.V2.jarvis_AUR_USDC_V2.NewVault, '18', CHAINS_ID.MATIC_MAINNET],
     },
   },
   AURFEB22: {
@@ -4993,7 +5017,7 @@ module.exports = {
       params: [
         addresses.MATIC.AURFEB22,
         addresses.MATIC.pUSDC,
-        addresses.MATIC.jarvis_AUR_USDC_V2.Underlying,
+        addresses.MATIC.V2.jarvis_AUR_USDC_V2.Underlying,
       ],
     },
   },
@@ -5005,17 +5029,17 @@ module.exports = {
     apyTokenSymbols: ['AURFEB22'],
     displayName: 'Jarvis: AUR(FEB22)-USDC',
     subLabel: 'Auto-compounding',
-    tokenAddress: addresses.MATIC.jarvis_AUR_USDC_V2.Underlying,
+    tokenAddress: addresses.MATIC.V2.jarvis_AUR_USDC_V2.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.jarvis_AUR_USDC_V2.NewVault,
+    vaultAddress: addresses.MATIC.V2.jarvis_AUR_USDC_V2.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.MATIC.jarvis_AUR_USDC_V2.Underlying, 'AURFEB22', 'pUSDC'],
+      params: [addresses.MATIC.V2.jarvis_AUR_USDC_V2.Underlying, 'AURFEB22', 'pUSDC'],
     },
     estimateApyFunctions: [
       {
         type: 'JARVIS',
-        params: [3, addresses.MATIC.jarvis_AUR_USDC_V2.Underlying, profitSharingCut8Percent],
+        params: [3, addresses.MATIC.V2.jarvis_AUR_USDC_V2.Underlying, profitSharingCut8Percent],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'AURFEB22'],
@@ -5029,14 +5053,14 @@ module.exports = {
     apyTokenSymbols: ['DEN'],
     displayName: 'Jarvis: 4EUR',
     subLabel: 'HODL',
-    tokenAddress: addresses.MATIC.jarvis_4EUR_HODL.Underlying,
+    tokenAddress: addresses.MATIC.V2.jarvis_4EUR_HODL.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.jarvis_4EUR_HODL.NewVault,
+    vaultAddress: addresses.MATIC.V2.jarvis_4EUR_HODL.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.CURVE_POOL,
       params: [
-        addresses.MATIC.jarvis_4EUR_HODL.Underlying,
-        addresses.MATIC.jarvis_4EUR_HODL.Underlying,
+        addresses.MATIC.V2.jarvis_4EUR_HODL.Underlying,
+        addresses.MATIC.V2.jarvis_4EUR_HODL.Underlying,
         18,
         ['JEUR', 'pEURT', 'pEURS', 'PAR'],
         CHAINS_ID.MATIC_MAINNET,
@@ -5047,7 +5071,7 @@ module.exports = {
         type: 'JARVIS_HODL_V2',
         params: [
           1,
-          addresses.MATIC.jarvis_4EUR_HODL.Underlying,
+          addresses.MATIC.V2.jarvis_4EUR_HODL.Underlying,
           profitSharingCut8Percent,
           'jarvis_DEN_4EUR',
         ],
@@ -5068,17 +5092,17 @@ module.exports = {
     apyTokenSymbols: ['DEN'],
     displayName: 'Jarvis: DEN-4EUR',
     subLabel: 'Auto-compounding',
-    tokenAddress: addresses.MATIC.jarvis_DEN_4EUR.Underlying,
+    tokenAddress: addresses.MATIC.V2.jarvis_DEN_4EUR.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.jarvis_DEN_4EUR.NewVault,
+    vaultAddress: addresses.MATIC.V2.jarvis_DEN_4EUR.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.MATIC.jarvis_DEN_4EUR.Underlying, 'DEN', 'FOUR_EUR'],
+      params: [addresses.MATIC.V2.jarvis_DEN_4EUR.Underlying, 'DEN', 'FOUR_EUR'],
     },
     estimateApyFunctions: [
       {
         type: 'JARVIS_V2',
-        params: [0, addresses.MATIC.jarvis_DEN_4EUR.Underlying, profitSharingCut8Percent],
+        params: [0, addresses.MATIC.V2.jarvis_DEN_4EUR.Underlying, profitSharingCut8Percent],
       },
     ],
     cmcRewardTokenSymbols: ['iFARM', 'DEN'],
@@ -5091,17 +5115,17 @@ module.exports = {
     apyTokenSymbols: ['AURFEB22'],
     displayName: 'Jarvis: EUR-USDC',
     subLabel: 'HODL',
-    tokenAddress: addresses.MATIC.jarvis_JEUR_USDC_HODL.Underlying,
+    tokenAddress: addresses.MATIC.V2.jarvis_JEUR_USDC_HODL.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.jarvis_JEUR_USDC_HODL.NewVault,
+    vaultAddress: addresses.MATIC.V2.jarvis_JEUR_USDC_HODL.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.MATIC.jarvis_JEUR_USDC_HODL.Underlying, 'JEUR', 'pUSDC'],
+      params: [addresses.MATIC.V2.jarvis_JEUR_USDC_HODL.Underlying, 'JEUR', 'pUSDC'],
     },
     estimateApyFunctions: [
       {
         type: 'JARVIS_HODL',
-        params: [0, addresses.MATIC.jarvis_JEUR_USDC_HODL.Underlying, profitSharingCut8Percent],
+        params: [0, addresses.MATIC.V2.jarvis_JEUR_USDC_HODL.Underlying, profitSharingCut8Percent],
         extraDailyCompound: false,
       },
     ],
@@ -5118,17 +5142,17 @@ module.exports = {
     apyTokenSymbols: ['AURFEB22'],
     displayName: 'Jarvis: GBP-USDC',
     subLabel: 'HODL',
-    tokenAddress: addresses.MATIC.jarvis_JGBP_USDC_HODL.Underlying,
+    tokenAddress: addresses.MATIC.V2.jarvis_JGBP_USDC_HODL.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.jarvis_JGBP_USDC_HODL.NewVault,
+    vaultAddress: addresses.MATIC.V2.jarvis_JGBP_USDC_HODL.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.MATIC.jarvis_JGBP_USDC_HODL.Underlying, 'JGBP', 'pUSDC'],
+      params: [addresses.MATIC.V2.jarvis_JGBP_USDC_HODL.Underlying, 'JGBP', 'pUSDC'],
     },
     estimateApyFunctions: [
       {
         type: 'JARVIS_HODL',
-        params: [1, addresses.MATIC.jarvis_JGBP_USDC_HODL.Underlying, profitSharingCut8Percent],
+        params: [1, addresses.MATIC.V2.jarvis_JGBP_USDC_HODL.Underlying, profitSharingCut8Percent],
         extraDailyCompound: false,
       },
     ],
@@ -5145,17 +5169,17 @@ module.exports = {
     apyTokenSymbols: ['AURFEB22'],
     displayName: 'Jarvis: CHF-USDC',
     subLabel: 'HODL',
-    tokenAddress: addresses.MATIC.jarvis_JCHF_USDC_HODL.Underlying,
+    tokenAddress: addresses.MATIC.V2.jarvis_JCHF_USDC_HODL.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.jarvis_JCHF_USDC_HODL.NewVault,
+    vaultAddress: addresses.MATIC.V2.jarvis_JCHF_USDC_HODL.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.MATIC.jarvis_JCHF_USDC_HODL.Underlying, 'JCHF', 'pUSDC'],
+      params: [addresses.MATIC.V2.jarvis_JCHF_USDC_HODL.Underlying, 'JCHF', 'pUSDC'],
     },
     estimateApyFunctions: [
       {
         type: 'JARVIS_HODL',
-        params: [2, addresses.MATIC.jarvis_JCHF_USDC_HODL.Underlying, profitSharingCut8Percent],
+        params: [2, addresses.MATIC.V2.jarvis_JCHF_USDC_HODL.Underlying, profitSharingCut8Percent],
         extraDailyCompound: false,
       },
     ],
@@ -5173,12 +5197,12 @@ module.exports = {
     apyTokenSymbols: ['AUR0112'],
     displayName: 'Jarvis: AUR(0112)-USDC',
     subLabel: 'Auto-compounding',
-    tokenAddress: addresses.MATIC.jarvis_AUR_USDC.Underlying,
+    tokenAddress: addresses.MATIC.V2.jarvis_AUR_USDC.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.jarvis_AUR_USDC.NewVault,
+    vaultAddress: addresses.MATIC.V2.jarvis_AUR_USDC.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.LP_TOKEN,
-      params: [addresses.MATIC.jarvis_AUR_USDC.Underlying, 'AUR0112', 'pUSDC'],
+      params: [addresses.MATIC.V2.jarvis_AUR_USDC.Underlying, 'AUR0112', 'pUSDC'],
     },
     estimateApyFunctions: [
       {
@@ -5197,14 +5221,14 @@ module.exports = {
     apyTokenSymbols: ['BAL'],
     displayName: 'Balancer: Polybase',
     subLabel: 'WMATIC: 25%, USDC: 25%, WETH: 25%, BAL: 25%',
-    tokenAddress: addresses.MATIC.balancer_POLYBASE.Underlying,
+    tokenAddress: addresses.MATIC.V2.balancer_POLYBASE.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.balancer_POLYBASE.NewVault,
+    vaultAddress: addresses.MATIC.V2.balancer_POLYBASE.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.BALANCER,
       params: [
-        addresses.MATIC.balancer_POLYBASE.Underlying,
-        addresses.MATIC.balancer_POLYBASE.PoolId,
+        addresses.MATIC.V2.balancer_POLYBASE.Underlying,
+        addresses.MATIC.V2.balancer_POLYBASE.PoolId,
         CHAINS_ID.MATIC_MAINNET,
       ],
     },
@@ -5212,8 +5236,8 @@ module.exports = {
       {
         type: ESTIMATED_APY_TYPES.BALANCER,
         params: [
-          addresses.MATIC.balancer_POLYBASE.Underlying,
-          addresses.MATIC.balancer_POLYBASE.PoolId,
+          addresses.MATIC.V2.balancer_POLYBASE.Underlying,
+          addresses.MATIC.V2.balancer_POLYBASE.PoolId,
           '5500',
           profitSharingCut8Percent,
           CHAINS_ID.MATIC_MAINNET,
@@ -5230,14 +5254,14 @@ module.exports = {
     apyTokenSymbols: ['BAL'],
     displayName: 'Balancer: Tricrypto',
     subLabel: 'WBTC: 33%, USDC: 33%, WETH: 33%',
-    tokenAddress: addresses.MATIC.balancer_TRICRYPTO.Underlying,
+    tokenAddress: addresses.MATIC.V2.balancer_TRICRYPTO.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.balancer_TRICRYPTO.NewVault,
+    vaultAddress: addresses.MATIC.V2.balancer_TRICRYPTO.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.BALANCER,
       params: [
-        addresses.MATIC.balancer_TRICRYPTO.Underlying,
-        addresses.MATIC.balancer_TRICRYPTO.PoolId,
+        addresses.MATIC.V2.balancer_TRICRYPTO.Underlying,
+        addresses.MATIC.V2.balancer_TRICRYPTO.PoolId,
         CHAINS_ID.MATIC_MAINNET,
       ],
     },
@@ -5245,8 +5269,8 @@ module.exports = {
       {
         type: ESTIMATED_APY_TYPES.BALANCER,
         params: [
-          addresses.MATIC.balancer_TRICRYPTO.Underlying,
-          addresses.MATIC.balancer_TRICRYPTO.PoolId,
+          addresses.MATIC.V2.balancer_TRICRYPTO.Underlying,
+          addresses.MATIC.V2.balancer_TRICRYPTO.PoolId,
           '2250',
           profitSharingCut8Percent,
           CHAINS_ID.MATIC_MAINNET,
@@ -5263,14 +5287,14 @@ module.exports = {
     apyTokenSymbols: ['BAL', 'QI'],
     displayName: 'Balancer: Stable',
     subLabel: 'USDC, DAI, miMATIC, USDT',
-    tokenAddress: addresses.MATIC.balancer_STABLE.Underlying,
+    tokenAddress: addresses.MATIC.V2.balancer_STABLE.Underlying,
     decimals: '18',
-    vaultAddress: addresses.MATIC.balancer_STABLE.NewVault,
+    vaultAddress: addresses.MATIC.V2.balancer_STABLE.NewVault,
     priceFunction: {
       type: GET_PRICE_TYPES.BALANCER,
       params: [
-        addresses.MATIC.balancer_STABLE.Underlying,
-        addresses.MATIC.balancer_STABLE.PoolId,
+        addresses.MATIC.V2.balancer_STABLE.Underlying,
+        addresses.MATIC.V2.balancer_STABLE.PoolId,
         CHAINS_ID.MATIC_MAINNET,
       ],
     },
@@ -5278,8 +5302,8 @@ module.exports = {
       {
         type: ESTIMATED_APY_TYPES.BALANCER,
         params: [
-          addresses.MATIC.balancer_STABLE.Underlying,
-          addresses.MATIC.balancer_STABLE.PoolId,
+          addresses.MATIC.V2.balancer_STABLE.Underlying,
+          addresses.MATIC.V2.balancer_STABLE.PoolId,
           '2500',
           profitSharingCut8Percent,
           CHAINS_ID.MATIC_MAINNET,
