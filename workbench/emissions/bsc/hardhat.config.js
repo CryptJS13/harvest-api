@@ -101,14 +101,14 @@ task('notify', 'Notifies with specified amounts').setAction(async () => {
   const { amountBFarm } = await prompt.get(['amountBFarm'])
   const machineBFarm = to18(amountBFarm)
 
-  prompt.message = `miFARM: ${amountBFarm} [${machineBFarm}]`
+  prompt.message = `bFARM: ${amountBFarm} [${machineBFarm}]`
   await prompt.get(['ok'])
 
   await notifyPools(
     helperAddresses.GlobalIncentivesHelper,
     [addresses.bFARM],
     [machineBFarm],
-    '1637694000', // not relevant on polygon, don't bother updating
+    '1637694000', // not relevant on BSC, don't bother updating
   ),
     console.log('Notification completed.')
 })
@@ -151,7 +151,7 @@ module.exports = {
         url: 'https://bsc.getblock.io/mainnet/?api_key=' + secret.getBlockKey,
       },
     },
-    cron_mainnet: {
+    mainnet: {
       url: 'https://bsc.getblock.io/mainnet/?api_key=' + secret.getBlockKey,
       chainId: 56,
       accounts: {
