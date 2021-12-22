@@ -9,12 +9,12 @@ const assert = require('assert')
 const baseWeekOffset = 70 // item 0 would correspond to week 70
 
 const helperAddresses = {
-  StatefulEmissionsHelper: '0xbf025cA78DC18e8646B706A49dC194D04537A14D', // StatefulEmissionsHelper
+  StatefulEmissionsHelper: '0x71316a3465e0fbcd08e665D6675caA8F7B1Dd40A', // StatefulEmissionsHelper
   NotifyHelper: '0xE20c31e3d08027F5AfACe84A3A46B7b3B165053c',
   NotifyHelperIFARM: '0x8af7Eb5a93076F6A2316261aC8D42F97aDaab64E',
-  MinterHelper: '0xE5C6BE56401986F8ae7e031bFAD5e07c13467fD4',
+  MinterHelper: '0x973d0408deE278203c8613178c1732fd60182916',
   DelayMinter: '0x284D7200a0Dabb05ee6De698da10d00df164f61d',
-  Storage_MinterHelperAsGovernance: '0x8085407A8b5Cc475Cc5c02F872b39b57E4Ee3bCF',
+  Storage_MinterHelperAsGovernance: '0x9933682D7c7c03a4752Ad26fCf07a0Ed32203D62',
 }
 
 /* global task */
@@ -35,6 +35,7 @@ const {
   transferGovernance,
   setStorageOriginal,
   executeMintOriginal,
+  notifyIFarmBuybackAmount,
 } = require('../_shared/lib.js')
 const parser = require('../_shared/csv-parser.js')
 
@@ -136,6 +137,7 @@ task('record', 'Stores percentages of emissions in the contract').setAction(asyn
   const emissionItems = await parser.convertFromForEthereumMainnet(
     `../_data/ethereum.csv`,
     addresses.V2,
+    helperAddresses.StatefulEmissionsHelper,
   )
   await printStats()
   const filteredEmissions = await filterEmissions(emissionItems)
@@ -234,6 +236,11 @@ task(
   )
 
   console.log(
+    '--ptofit share before',
+    toReadable(await getBalance(addresses.FARM, '0x8f5adC58b32D4e5Ca02EAC0E293D35855999436C')),
+  )
+
+  console.log(
     '--a FARM vault before',
     toReadable(await getBalance(addresses.FARM, '0x3DA9D911301f8144bdF5c3c67886e5373DCdff8e')),
   )
@@ -256,6 +263,11 @@ task(
   console.log(
     '--strat reserve after',
     toReadable(await getBalance(addresses.FARM, '0xd00FCE4966821Da1EdD1221a02aF0AFc876365e4')),
+  )
+
+  console.log(
+    '--ptofit share after',
+    toReadable(await getBalance(addresses.FARM, '0x8f5adC58b32D4e5Ca02EAC0E293D35855999436C')),
   )
 
   console.log(
@@ -296,6 +308,47 @@ task('append-mints', 'Executes the very first mint and notifies all relevant poo
     console.log('Minting and notification completed.')
   },
 )
+
+task('incentivize-ifarm-pool', 'Incentives a specific iFARM pool').setAction(async () => {
+  await printStats()
+
+  prompt.start()
+
+  prompt.message = `Which vault (use id from addresses.json)?`
+  const { vaultName } = await prompt.get([
+    {
+      name: 'vaultName',
+      default: '',
+    },
+  ])
+
+  prompt.message = `confirming pool address. Enter the correct one if it is wrong.`
+  const { rewardPoolAddr } = await prompt.get([
+    {
+      name: 'rewardPoolAddr',
+      default: addresses.V2[vaultName].NewPool,
+    },
+  ])
+
+  prompt.message = `How much? (default 3 farm)`
+
+  const { balance } = await prompt.get([
+    {
+      name: 'balance',
+      default: '3' + '0'.repeat(18),
+    },
+  ])
+
+  await approve(addresses.FARM, addresses.FeeRewardForwarder, balance)
+  console.log('Approved.')
+  await notifyIFarmBuybackAmount(
+    addresses.FeeRewardForwarder,
+    addresses.FARM,
+    rewardPoolAddr,
+    balance,
+  )
+  console.log('Minting and notification completed.')
+})
 
 task('clear-pool', 'Clears a specific pool address (for emergency)').setAction(async () => {
   await printStats()
