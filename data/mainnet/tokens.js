@@ -46,6 +46,46 @@ module.exports = {
     ],
     cmcRewardTokenSymbols: ['FARM', 'WETH'],
   },
+  pPSP: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: './icons/psp.png',
+    tokenAddress: addresses.MATIC.pPSP,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['paraswap'],
+    },
+  },
+  quickswap_PSP_MATIC: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    category: VAULT_CATEGORIES_IDS.QUICKSWAP,
+    isNew: true,
+    displayName: 'Quickswap: PSP-MATIC',
+    apyIconUrls: ['./icons/psp.png', './icons/quick.png'],
+    apyTokenSymbols: ['PSP', 'dQUICK'],
+    logoUrl: './icons/quick-psp-matic.png',
+    tokenAddress: addresses.MATIC.V2.quickswap_PSP_MATIC.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.MATIC.V2.quickswap_PSP_MATIC.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.LP_TOKEN,
+      params: [addresses.MATIC.V2.quickswap_PSP_MATIC.Underlying, 'pPSP', 'WMATIC'],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.QUICKSWAP_DUAL_REWARD,
+        params: [
+          addresses.MATIC.V2.quickswap_PSP_MATIC.RewardPool,
+          'quickswap_PSP_MATIC',
+          'dQUICK',
+          'pPSP',
+          profitSharingCut8Percent,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['miFARM', 'WMATIC', 'pPSP', 'dQUICK'],
+  },
   LOOKS: {
     chain: CHAINS_ID.ETH_MAINNET,
     logoUrl: './icons/looks.png',
@@ -102,6 +142,28 @@ module.exports = {
       params: ['gnome'],
     },
   },
+  pYEL: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: './icons/yel.png',
+    tokenAddress: addresses.MATIC.pYEL,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['yel-finance'],
+    },
+  },
+  pICE: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: './icons/ice.png',
+    tokenAddress: addresses.MATIC.pICE,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: {
+      type: GET_PRICE_TYPES.COINGECKO_ID,
+      params: ['ice-token'],
+    },
+  },
   SUSHI_GENE_ETH: {
     chain: CHAINS_ID.MATIC_MAINNET,
     category: VAULT_CATEGORIES_IDS.GENOMES,
@@ -149,6 +211,27 @@ module.exports = {
       },
     ],
     cmcRewardTokenSymbols: ['miFARM', 'pGENE'],
+  },
+  mUSD: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    category: VAULT_CATEGORIES_IDS.MSTABLE,
+    isNew: true,
+    logoUrl: './icons/mstable.svg',
+    apyIconUrls: ['./icons/mta.svg'],
+    apyTokenSymbols: ['MTA'],
+    displayName: 'mUSD',
+    subLabel: 'mStable',
+    tokenAddress: addresses.MATIC.V2.mUSD.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.MATIC.V2.mUSD.NewVault,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_ID, params: ['musd'] },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.MSTABLE,
+        params: ['imUSD', 'polygon', profitSharingCut8Percent],
+      },
+    ],
+    cmcRewardTokenSymbols: ['miFARM', 'wMATIC'],
   },
   crvCVXCRV: {
     chain: CHAINS_ID.ETH_MAINNET,
@@ -716,6 +799,36 @@ module.exports = {
     ],
     cmcRewardTokenSymbols: ['miFARM', 'pWETH', 'pUSDT'],
   },
+  popsicle_ICE_WETH: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    category: VAULT_CATEGORIES_IDS.POPSICLE,
+    displayName: 'Popsicle: ICE-WETH',
+    isNew: true,
+    subLabel: 'Sushiswap',
+    apyIconUrls: ['./icons/ice.png'],
+    apyTokenSymbols: ['ICE'],
+    logoUrl: './icons/ice-eth.png',
+    tokenAddress: addresses.MATIC.V2.popsicle_ICE_WETH.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.MATIC.V2.popsicle_ICE_WETH.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.LP_TOKEN,
+      params: [addresses.MATIC.V2.popsicle_ICE_WETH.Underlying, 'pICE', 'pWETH'],
+    },
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.POPSICLE,
+        params: [
+          addresses.MATIC.V2.popsicle_ICE_WETH.PoolId,
+          'pICE',
+          'pWETH',
+          profitSharingCut8Percent,
+          CHAINS_ID.MATIC_MAINNET,
+        ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['miFARM', 'pWETH', 'pUSDT'],
+  },
   sushi_USDC_ETH: {
     chain: CHAINS_ID.MATIC_MAINNET,
     category: VAULT_CATEGORIES_IDS.SUSHI,
@@ -740,6 +853,30 @@ module.exports = {
           profitSharingCut8Percent,
           CHAINS_ID.MATIC_MAINNET,
         ],
+      },
+    ],
+    cmcRewardTokenSymbols: ['miFARM', 'pUSDC', 'pWETH'],
+  },
+  quick_YEL_MATIC: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    category: VAULT_CATEGORIES_IDS.YEL,
+    isNew: true,
+    logoUrl: './icons/yel-matic.png',
+    apyIconUrls: ['./icons/yel.png'],
+    apyTokenSymbols: ['YEL'],
+    displayName: 'YEL: YEL-MATIC',
+    subLabel: 'Quickswap',
+    tokenAddress: addresses.MATIC.V2.quick_YEL_MATIC.Underlying,
+    decimals: '18',
+    vaultAddress: addresses.MATIC.V2.quick_YEL_MATIC.NewVault,
+    priceFunction: {
+      type: GET_PRICE_TYPES.LP_TOKEN,
+      params: [addresses.MATIC.V2.quick_YEL_MATIC.Underlying, 'pYEL', 'WMATIC'],
+    },
+    estimateApyFunctions: [
+      {
+        type: 'YEL-MATIC',
+        params: [addresses.MATIC.V2.quick_YEL_MATIC.PoolId, profitSharingCut8Percent],
       },
     ],
     cmcRewardTokenSymbols: ['miFARM', 'pUSDC', 'pWETH'],
@@ -1772,7 +1909,13 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.POPSICLE,
-        params: [addresses.BSC.V2.popsicle_ICE_BNB.PoolId, 'ICE', 'wBNB', profitSharingCut8Percent],
+        params: [
+          addresses.BSC.V2.popsicle_ICE_BNB.PoolId,
+          'ICE',
+          'wBNB',
+          profitSharingCut8Percent,
+          CHAINS_ID.BSC_MAINNET,
+        ],
       },
     ],
   },
@@ -4884,7 +5027,13 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.POPSICLE,
-        params: [addresses.BSC.V2.popsicle_ICE.PoolId, null, null, profitSharingCut8Percent],
+        params: [
+          addresses.BSC.V2.popsicle_ICE.PoolId,
+          null,
+          null,
+          profitSharingCut8Percent,
+          CHAINS_ID.BSC_MAINNET,
+        ],
       },
     ],
   },
@@ -5147,6 +5296,14 @@ module.exports = {
       type: GET_PRICE_TYPES.F_TOKEN,
       params: [addresses.MATIC.V2.jarvis_AUR_USDC_V2.NewVault, '18', CHAINS_ID.MATIC_MAINNET],
     },
+  },
+  pMTA: {
+    chain: CHAINS_ID.MATIC_MAINNET,
+    logoUrl: './icons/mta.svg',
+    tokenAddress: addresses.MATIC.pMTA,
+    decimals: '18',
+    vaultAddress: null,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_ID, params: ['meta'] },
   },
   AURFEB22: {
     chain: CHAINS_ID.MATIC_MAINNET,

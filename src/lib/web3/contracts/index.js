@@ -48,6 +48,9 @@ const amplifierContract = require('../contracts/amplifier/contract.json')
 const balancerVaultMethods = require('../contracts/balancer-vault/methods')
 const balancerVaultContract = require('../contracts/balancer-vault/contract.json')
 
+const quickswapDualRewardMethods = require('../contracts/quickswap-dual-reward/methods')
+const quickswapDualRewardContract = require('../contracts/quickswap-dual-reward/contract.json')
+
 module.exports = {
   vault: {
     methods: vaultMethods,
@@ -115,5 +118,9 @@ module.exports = {
   balancerVault: {
     contract: balancerVaultContract,
     methods: balancerVaultMethods,
+  },
+  quickswapDualReward: {
+    contract: quickswapDualRewardContract,
+    methods: quickswapDualRewardMethods,
   },
 }
