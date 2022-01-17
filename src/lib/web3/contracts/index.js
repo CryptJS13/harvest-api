@@ -1,4 +1,4 @@
-oconst vaultMethods = require('../contracts/vault/methods')
+const vaultMethods = require('../contracts/vault/methods')
 const vaultContract = require('../contracts/vault/contract.json')
 
 const controllerMethods = require('../contracts/controller/methods')
