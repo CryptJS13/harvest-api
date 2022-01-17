@@ -1,4 +1,4 @@
-const vaultMethods = require('../contracts/vault/methods')
+oconst vaultMethods = require('../contracts/vault/methods')
 const vaultContract = require('../contracts/vault/contract.json')
 
 const controllerMethods = require('../contracts/controller/methods')
@@ -44,6 +44,9 @@ const lendingTokenMethods = require('../contracts/lending-token/methods')
 const lendingTokenContract = require('../contracts/lending-token/contract.json')
 
 const amplifierContract = require('../contracts/amplifier/contract.json')
+
+const balancerVaultMethods = require('../contracts/balancer-vault/methods')
+const balancerVaultContract = require('../contracts/balancer-vault/contract.json')
 
 module.exports = {
   vault: {
@@ -108,5 +111,9 @@ module.exports = {
   lendingToken: {
     contract: lendingTokenContract,
     methods: lendingTokenMethods,
+  },
+  balancerVault: {
+    contract: balancerVaultContract,
+    methods: balancerVaultMethods,
   },
 }
