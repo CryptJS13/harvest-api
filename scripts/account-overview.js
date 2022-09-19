@@ -2,7 +2,17 @@ const BigNumber = require('bignumber.js')
 const { UI_DATA_FILES } = require('../src/lib/constants')
 const { getUIData } = require('../src/lib/data')
 const keys = require('../dev-keys.json')
-const { getNativeBalances, getPoolBalances, getUsdValue, getRariBalance, getTokenBalance, getUSDEUR } = require('./utils')
+const {
+  getNativeBalances,
+  getPoolBalances,
+  getEurValue,
+  getTokenBalance,
+  getUSDEUR,
+  isETH,
+  isBTC,
+  isSTABLE,
+  isFARM
+} = require('./utils')
 const initDb = require('../src/lib/db')
 const { cliPreload } = require('../src/runtime/pollers')
 
@@ -12,29 +22,29 @@ const main = async () => {
   const tokens = await getUIData(UI_DATA_FILES.TOKENS)
   const pools = await getUIData(UI_DATA_FILES.POOLS)
   const accounts = keys.walletAddresses
-  // const accounts = ["0x814055779F8d2F591277b76C724b7AdC74fb82D9"]
   console.log("Accounts:", accounts)
-  const ethPrice = await getUsdValue(['WETH'], [1], 1)
-  const farmPrice = await getUsdValue(['FARM'], [1], 1)
-  const iFarmPrice = await getUsdValue(['IFARM'], [1], 1)
-  console.log("ETH price:       ", ethPrice, "usd")
-  console.log("FARM price:      ", farmPrice, "usd")
-  console.log("iFARM price:     ", iFarmPrice, "usd")
-
-  let allStaked = 0, allRewards = 0
   const usdEUR = await getUSDEUR()
   console.log("usdEur:          ", usdEUR)
+  const ethPrice = await getEurValue(['WETH'], [1], 1, usdEUR)
+  const farmPrice = await getEurValue(['FARM'], [1], 1, usdEUR)
+  const iFarmPrice = await getEurValue(['IFARM'], [1], 1, usdEUR)
+  console.log("ETH price:       ", ethPrice, "eur")
+  console.log("FARM price:      ", farmPrice, "eur")
+  console.log("iFARM price:     ", iFarmPrice, "eur")
+
+  let allStaked = 0, allRewards = 0, cryptoBalance=0, stableBalance=0, ethBalance=0, btcBalance=0, farmBalance=0
   for (const i in accounts) {
     let account = accounts[i]
     console.log("---------------------------------------------")
     console.log("Account:", account)
     console.log("")
     console.log("Fetching native token balances...")
-    const nativeBalances = await getNativeBalances(account)
+    const nativeBalances = await getNativeBalances(account, usdEUR)
 
-    console.log("Total native balance:", nativeBalances, "usd")
+    console.log("Total native balance:", nativeBalances, "eur")
     console.log("")
     allStaked += nativeBalances
+    cryptoBalance += nativeBalances
 
     console.log("Fetching pools...")
     let totalUnderlying = 0, totalRewards = 0
@@ -43,60 +53,76 @@ const main = async () => {
       const result = await getPoolBalances(account, pool)
       if (result.balance[0]>0 || result.rewardTokens[0]) {
         console.log("Pool", j, "of", pools.length, ":", pool.id)
-        underlyingValue = await getUsdValue(result.underlying, result.balance, pool.chain)
-        console.log("Underlying value:  ", underlyingValue, "usd")
-        rewardValue = await getUsdValue(result.rewardTokens, result.rewardAmounts, pool.chain)
-        console.log("Reward value:      ", rewardValue, "usd")
+        underlyingValue = await getEurValue(result.underlying, result.balance, pool.chain, usdEUR)
+        console.log("Underlying value:  ", underlyingValue, "eur")
+        rewardValue = await getEurValue(result.rewardTokens, result.rewardAmounts, pool.chain, usdEUR)
+        console.log("Reward value:      ", rewardValue, "eur")
         totalUnderlying += underlyingValue
         totalRewards += rewardValue
+        cryptoBalance += rewardValue
+        if (isSTABLE(pool.contractAddress)) {
+          stableBalance += underlyingValue
+        } else if (isETH(pool.contractAddress)) {
+          ethBalance += underlyingValue
+        } else if (isBTC(pool.contractAddress)) {
+          btcBalance += underlyingValue
+        } else if (isFARM(pool.contractAddress)) {
+          farmBalance += underlyingValue
+        } else {
+          cryptoBalance += underlyingValue
+        }
       }
     }
     console.log("")
-    console.log("Total staked:      ", totalUnderlying, "usd")
-    console.log("Total rewards:     ", totalRewards, "usd")
+    console.log("Total staked:      ", totalUnderlying, "eur")
+    console.log("Total rewards:     ", totalRewards, "eur")
     console.log("")
     allStaked += totalUnderlying
     allRewards += totalRewards
-
-    console.log("Fetching Rari positions...")
-    let rariBalance = await getRariBalance(account)
-    console.log("Rari supplied:    ", rariBalance.supplied, "usd")
-    console.log("Rari borrowed:    ", rariBalance.borrowed, "usd")
-    console.log("Rari balance:     ", rariBalance.supplied - rariBalance.borrowed, "usd")
-    console.log("")
-    allStaked += rariBalance.supplied - rariBalance.borrowed
 
     console.log("Fetching balances...")
     let l = 0
     let totalBalance = 0
     for (const k in tokens) {
-      if (k == 'FARMSteadUSDC') {
-        continue
-      }
       const token = tokens[k]
-      const result = await getTokenBalance(account, token)
-      if (result > 0) {
+      const result = await getTokenBalance(account, token, usdEUR)
+      if (result > 0.01) {
         console.log("Token", l, "of", Object.keys(tokens).length, ":", k)
-        console.log("USD value:         ", result, "usd")
+        console.log("EUR value:         ", result, "eur")
         totalBalance += result
+        if (isSTABLE(token.tokenAddress)) {
+          stableBalance += result
+        } else if (isETH(token.tokenAddress)) {
+          ethBalance += result
+        } else if (isBTC(token.tokenAddress)) {
+          btcBalance += result
+        } else if (isFARM(token.tokenAddress)) {
+          farmBalance += result
+        } else {
+          cryptoBalance += result
+        }
       }
       l++
     }
     console.log("")
-    console.log("Total token balance:", totalBalance, "usd")
+    console.log("Total token balance:", totalBalance, "eur")
     console.log("")
     allStaked += totalBalance
 
     console.log(".............................................")
-    const allBalance = nativeBalances+totalUnderlying+totalRewards+rariBalance.supplied-rariBalance.borrowed+totalBalance
-    console.log("Account balance:     ", allBalance, "usd")
-    console.log("Account balance:     ", allBalance/usdEUR, "eur")
+    const allBalance = nativeBalances+totalUnderlying+totalRewards+totalBalance
+    console.log("Account balance:     ", allBalance, "eur")
   }
   console.log("---------------------------------------------")
-  console.log("Cumulative balance:   ", allStaked, "usd")
-  console.log("Claimable rewards:    ", allRewards, "usd")
-  console.log("Grand total:          ", allStaked + allRewards, "usd")
-  console.log("Grand total:          ", (allStaked + allRewards)/usdEUR, "eur")
+  console.log("Cumulative balance:   ", allStaked, "eur")
+  console.log("Claimable rewards:    ", allRewards, "eur")
+  console.log("Grand total:          ", allStaked + allRewards, "eur")
+  console.log("---------------------------------------------")
+  console.log("FARM value:           ", farmBalance, "eur")
+  console.log("STABLE value:         ", stableBalance, "eur")
+  console.log("ETH value:            ", ethBalance, "eur")
+  console.log("BTC value:            ", btcBalance, "eur")
+  console.log("Other crypto value:   ", cryptoBalance, "eur")
 }
 
 main()

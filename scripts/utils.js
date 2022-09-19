@@ -11,8 +11,52 @@ const { getTokenPrice } = require('../src/prices')
 const { getTokenPriceById } = require('../src/prices/coingecko.js')
 const { CHAIN_TYPES } = require('../src/lib/constants.js')
 
-async function getNativeBalances(account) {
-  let totalUsd = 0
+const ethTokens = [
+  "0x11301B7C82Cd953734440aaF0D5Dd0B36E2aB1d8",
+  "0x2E25800957742C52b4d69b65F9C67aBc5ccbffe6",
+  "0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0",
+  "0xFe2e637202056d30016725477c5da089Ab0A043A",
+  "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+]
+const btcTokens = [
+  "0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599"
+]
+const stableTokens = [
+  "0x9c55488f8AdC23544B8571757169AE17865ABFC8",
+  "0x2892FA6e9D7Fc9bc8C8e62BBe79AdDff41314d03",
+  "0x1046bC2199fa009a19A2a0A04eF598991BA4523E",
+  "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+  "0x6B175474E89094C44Da98b954EedeAC495271d0F",
+  "0xdAC17F958D2ee523a2206206994597C13D831ec7",
+  "0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174",
+  "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063",
+  "0xc2132D05D31c914a87C6611C10748AEb04B58e8F"
+]
+const farmTokens = [
+  "0x1571eD0bed4D987fe2b498DdBaE7DFA19519F651",
+  "0xa0246c9032bC3A600820415aE600c6388619A14D",
+  "0xab0b2ddB9C7e440fAc8E140A89c0dbCBf2d7Bbff",
+  "0x8cf3F692CAd5Bfa94817Fb425a2871bA11FE883d"
+]
+
+function isETH(address) {
+  return ethTokens.includes(address)
+}
+
+function isBTC(address) {
+  return btcTokens.includes(address)
+}
+
+function isSTABLE(address) {
+  return stableTokens.includes(address)
+}
+
+function isFARM(address) {
+  return farmTokens.includes(address)
+}
+
+async function getNativeBalances(account, usdEUR) {
+  let totalEur = 0
   for (const i in CHAIN_TYPES) {
     const chain = CHAIN_TYPES[i]
     const provider = getWeb3(chain)
@@ -21,22 +65,22 @@ async function getNativeBalances(account) {
     if (chain == '1') {
       price = await getTokenPrice('WETH')
     } else if (chain == '56') {
-      price = await getTokenPrice('WBNB')
+      price = await getTokenPrice('0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c', '56')
     } else if (chain == '137') {
-      price = await getTokenPrice('0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270', chain)
+      price = await getTokenPrice('WMATIC')
     }
-    const value = balance.times(price)
+    const value = balance.times(price).div(usdEUR)
     if (value > 0) {
-      console.log("USD value on", i, ":", value.toNumber(), "usd")
-      totalUsd += value.toNumber()
+      console.log("EUR value on", i, ":", value.toNumber(), "eur")
+      totalEur += value.toNumber()
     }
   }
-  return totalUsd
+  return totalEur
 }
 
 async function getPoolBalances(account, pool) {
   const web3Instance = getWeb3(pool.chain)
-  const isSingleRewardPool = pool.rewardTokens.length === 1
+  const isSingleRewardPool = pool.rewardTokenSymbols.length === 1
 
   const poolContract = isSingleRewardPool ? regularPoolContract : potPoolContract
   const poolInstance = new web3Instance.eth.Contract(
@@ -82,12 +126,12 @@ async function getPoolBalances(account, pool) {
   return {underlying: [pool.collateralAddress], balance: [balance], rewardTokens: tokens, rewardAmounts: amounts}
 }
 
-async function getUsdValue(tokens, amounts, chain) {
+async function getEurValue(tokens, amounts, chain, usdEUR) {
   let value = 0
   for (let i = 0; i < tokens.length; i++) {
-    let price = await getTokenPrice(tokens[i], chain)
-    let tokenValue = price * amounts[i]
-    value = value + tokenValue
+    let price = new BigNumber(await getTokenPrice(tokens[i], chain))
+    let tokenValue = price.times(amounts[i]).div(usdEUR)
+    value += tokenValue.toNumber()
   }
   return value
 }
@@ -125,10 +169,11 @@ async function getRariBalance(account) {
     totalSupplied += usdSupplied.toNumber()
     totalBorrowed += usdBorrowed.toNumber()
   }
-  return { supplied: totalSupplied, borrowed: totalBorrowed}
+  const health = totalBorrowed / (totalSupplied * 0.6) * 100
+  return { supplied: totalSupplied, borrowed: totalBorrowed, health: health }
 }
 
-async function getTokenBalance(account, token) {
+async function getTokenBalance(account, token, usdEUR) {
   const web3Instance = getWeb3(token.chain)
   const address = token.tokenAddress
   if (address.length < 42) {
@@ -142,8 +187,8 @@ async function getTokenBalance(account, token) {
     return 0
   }
   const price = await getTokenPrice(address)
-  const balanceUsd = balance.times(price)
-  return balanceUsd.toNumber()
+  const balanceEur = balance.times(price).div(usdEUR)
+  return balanceEur.toNumber()
 }
 
 async function getUSDEUR() {
@@ -155,8 +200,12 @@ async function getUSDEUR() {
 module.exports = {
   getNativeBalances,
   getPoolBalances,
-  getUsdValue,
+  getEurValue,
   getRariBalance,
   getTokenBalance,
   getUSDEUR,
+  isETH,
+  isBTC,
+  isSTABLE,
+  isFARM
 }
