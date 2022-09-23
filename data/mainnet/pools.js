@@ -2304,6 +2304,18 @@ module.exports = [
    `,
   },
   {
+    chain: CHAINS_ID.LOCAL_HOST,
+    id: 'USDC_TEST',
+    type: POOL_TYPES.INCENTIVE,
+    contractAddress: addresses.V2.USDC.NewPool,
+    collateralAddress: addresses.V2.USDC.NewVault,
+    rewardAPY: [],
+    rewardAPR: null,
+    rewardTokens: [addresses.FARM],
+    rewardTokenSymbols: ['FARM'],
+    zapperFiTokens: ['DAI', 'USDT'],
+  },
+  {
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'USDC',
     type: POOL_TYPES.INCENTIVE,
@@ -5604,10 +5616,6 @@ module.exports = [
   {
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_ZUSD_ETH',
-    tradingApyFunction: {
-      type: TRADING_APY_TYPES.UNIV3,
-      params: [addresses.V2.UniV3_ZUSD_ETH.NewVault],
-    },
     type: POOL_TYPES.UNIV3,
     contractAddress: addresses.V2.UniV3_ZUSD_ETH.NewPool,
     collateralAddress: addresses.V2.UniV3_ZUSD_ETH.NewVault,
@@ -5618,10 +5626,6 @@ module.exports = [
   {
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_zUSD_USDC_full_range',
-    tradingApyFunction: {
-      type: 'UNIV3_V2',
-      params: [addresses.V2.UniV3_zUSD_USDC_full_range.NewVault],
-    },
     type: POOL_TYPES.UNIV3,
     contractAddress: addresses.V2.UniV3_zUSD_USDC_full_range.NewPool,
     collateralAddress: addresses.V2.UniV3_zUSD_USDC_full_range.NewVault,
@@ -5674,10 +5678,6 @@ module.exports = [
   {
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_DPI_ETH',
-    tradingApyFunction: {
-      type: TRADING_APY_TYPES.UNIV3,
-      params: [addresses.V2.UniV3_DPI_ETH.NewVault],
-    },
     type: POOL_TYPES.UNIV3,
     contractAddress: addresses.V2.UniV3_DPI_ETH.NewPool,
     collateralAddress: addresses.V2.UniV3_DPI_ETH.NewVault,
@@ -6266,10 +6266,6 @@ module.exports = [
   {
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_REI_ETH',
-    tradingApyFunction: {
-      type: TRADING_APY_TYPES.UNIV3,
-      params: [addresses.V2.UniV3_REI_ETH.NewVault],
-    },
     type: POOL_TYPES.UNIV3,
     contractAddress: addresses.V2.UniV3_REI_ETH.NewPool,
     collateralAddress: addresses.V2.UniV3_REI_ETH.NewVault,
@@ -6280,10 +6276,6 @@ module.exports = [
   {
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_REI_ETH_full_range',
-    tradingApyFunction: {
-      type: 'UNIV3_V2',
-      params: [addresses.V2.UniV3_REI_ETH_full_range.NewVault],
-    },
     type: POOL_TYPES.UNIV3,
     contractAddress: addresses.V2.UniV3_REI_ETH_full_range.NewPool,
     collateralAddress: addresses.V2.UniV3_REI_ETH_full_range.NewVault,
@@ -6294,10 +6286,6 @@ module.exports = [
   {
     chain: CHAINS_ID.ETH_MAINNET,
     id: 'UniV3_REI_wBTC',
-    tradingApyFunction: {
-      type: TRADING_APY_TYPES.UNIV3,
-      params: [addresses.V2.UniV3_REI_wBTC.NewVault],
-    },
     type: POOL_TYPES.UNIV3,
     contractAddress: addresses.V2.UniV3_REI_wBTC.NewPool,
     collateralAddress: addresses.V2.UniV3_REI_wBTC.NewVault,

@@ -829,6 +829,25 @@ module.exports = {
     ],
     cmcRewardTokenSymbols: ['iFARM', 'CVX', 'CRV'],
   },
+  USDC_TEST: {
+    chain: CHAINS_ID.LOCAL_HOST,
+    displayName: 'USDC',
+    category: VAULT_CATEGORIES_IDS.STABLECOINS,
+    logoUrl: './icons/usdc.png',
+    apyIconUrls: ['./icons/comp.png', './icons/idle.png'],
+    apyTokenSymbols: ['COMP', 'IDLE'],
+    tokenAddress: addresses.USDC,
+    decimals: '6',
+    vaultAddress: addresses.V2.USDC.NewVault,
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.USDC] },
+    cmcRewardTokenSymbols: ['FARM', 'USDC'],
+    estimateApyFunctions: [
+      {
+        type: ESTIMATED_APY_TYPES.IDLE_FINANCE,
+        params: ['USDC', '0x5274891bEC421B39D23760c04A6755eCB444797C', '0.7'],
+      },
+    ],
+  },
   USDC: {
     chain: CHAINS_ID.ETH_MAINNET,
     displayName: 'USDC',

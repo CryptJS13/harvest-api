@@ -50,6 +50,7 @@ const getVaults = async () => {
   let fetchedETHVaults = [],
     fetchedBSCVaults = [],
     fetchedMATICVaults = [],
+    fetchedTESTVaults = [],
     fetchedVaults,
     hasErrors = false
 
@@ -67,6 +68,13 @@ const getVaults = async () => {
 
   const maticVaultsBatches = chunk(
     Object.keys(tokensWithVault).filter(tokenId => tokens[tokenId].chain === CHAIN_TYPES.MATIC),
+    GET_VAULT_DATA_BATCH_SIZE,
+  )
+
+  const testVaultsBatches = chunk(
+    Object.keys(tokensWithVault).filter(
+      tokenId => tokens[tokenId].chain === CHAIN_TYPES.LOCAL_HOST,
+    ),
     GET_VAULT_DATA_BATCH_SIZE,
   )
 
@@ -109,6 +117,19 @@ const getVaults = async () => {
   })
   console.log('\n-- Done getting ETH vaults data --')
 
+  console.log('\n-- Getting TEST vaults data --')
+  await forEach(testVaultsBatches, async batch => {
+    try {
+      console.log('Getting vault data for: ', batch)
+      const vaultsData = await getVaultsData(batch)
+      fetchedTESTVaults = fetchedTESTVaults.concat(vaultsData)
+    } catch (err) {
+      hasErrors = true
+      console.error(`Failed to get vault data for: ${batch}`, err)
+    }
+  })
+  console.log('\n-- Done getting TEST vaults data --')
+
   fetchedVaults = {
     bsc: fetchedBSCVaults.reduce((acc, vault) => {
       acc[vault.id] = vault
@@ -119,6 +140,10 @@ const getVaults = async () => {
       return acc
     }, {}),
     matic: fetchedMATICVaults.reduce((acc, vault) => {
+      acc[vault.id] = vault
+      return acc
+    }, {}),
+    test: fetchedTESTVaults.reduce((acc, vault) => {
       acc[vault.id] = vault
       return acc
     }, {}),
@@ -198,6 +223,7 @@ const getPools = async () => {
   let fetchedBSCPools = [],
     fetchedETHPools = [],
     fetchedMATICPools = [],
+    fetchedTESTPools = [],
     fetchedPools = [],
     hasErrors
 
@@ -250,6 +276,22 @@ const getPools = async () => {
       console.log('No pools available')
     }
     console.log('-- Done getting ETH pool data --\n')
+
+    console.log('\n-- Getting TEST pool data --')
+
+    const testPoolBatches = chunk(
+      pools.filter(pool => pool.chain === CHAIN_TYPES.LOCAL_HOST),
+      GET_POOL_DATA_BATCH_SIZE,
+    )
+    if (size(testPoolBatches)) {
+      await forEach(testPoolBatches, async poolBatch => {
+        const poolData = await getPoolsData(poolBatch)
+        fetchedTESTPools = fetchedTESTPools.concat(poolData)
+      })
+    } else {
+      console.log('No pools available')
+    }
+    console.log('-- Done getting TEST pool data --\n')
   } catch (err) {
     console.error('error getting pools', err)
     hasErrors = true
@@ -259,6 +301,7 @@ const getPools = async () => {
     bsc: fetchedBSCPools,
     eth: fetchedETHPools,
     matic: fetchedMATICPools,
+    test: fetchedTESTPools,
   }
   hasErrors =
     (isArray(fetchedBSCPools) &&
@@ -266,7 +309,9 @@ const getPools = async () => {
     (isArray(fetchedETHPools) &&
       (fetchedETHPools.includes(undefined) || fetchedETHPools.includes(null))) ||
     (isArray(fetchedMATICPools) &&
-      (fetchedMATICPools.includes(undefined) || fetchedMATICPools.includes(null)))
+      (fetchedMATICPools.includes(undefined) || fetchedMATICPools.includes(null))) ||
+    (isArray(fetchedTESTPools) &&
+      (fetchedTESTPools.includes(undefined) || fetchedTESTPools.includes(null)))
 
   await storeData(
     Cache,
