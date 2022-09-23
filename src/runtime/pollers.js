@@ -73,7 +73,7 @@ const getVaults = async () => {
 
   const testVaultsBatches = chunk(
     Object.keys(tokensWithVault).filter(
-      tokenId => tokens[tokenId].chain === CHAIN_TYPES.LOCAL_HOST,
+      tokenId => tokens[tokenId].chain === CHAIN_TYPES.TEST,
     ),
     GET_VAULT_DATA_BATCH_SIZE,
   )
@@ -280,7 +280,7 @@ const getPools = async () => {
     console.log('\n-- Getting TEST pool data --')
 
     const testPoolBatches = chunk(
-      pools.filter(pool => pool.chain === CHAIN_TYPES.LOCAL_HOST),
+      pools.filter(pool => pool.chain === CHAIN_TYPES.TEST),
       GET_POOL_DATA_BATCH_SIZE,
     )
     if (size(testPoolBatches)) {

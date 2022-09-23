@@ -830,8 +830,8 @@ module.exports = {
     cmcRewardTokenSymbols: ['iFARM', 'CVX', 'CRV'],
   },
   USDC_TEST: {
-    chain: CHAINS_ID.LOCAL_HOST,
-    displayName: 'USDC',
+    chain: CHAINS_ID.TEST,
+    displayName: 'USDC_TEST',
     category: VAULT_CATEGORIES_IDS.STABLECOINS,
     logoUrl: './icons/usdc.png',
     apyIconUrls: ['./icons/comp.png', './icons/idle.png'],
@@ -844,7 +844,7 @@ module.exports = {
     estimateApyFunctions: [
       {
         type: ESTIMATED_APY_TYPES.IDLE_FINANCE,
-        params: ['USDC', '0x5274891bEC421B39D23760c04A6755eCB444797C', '0.7'],
+        params: ['USDC_TEST', '0x5274891bEC421B39D23760c04A6755eCB444797C', '0.7', CHAINS_ID.TEST],
       },
     ],
   },

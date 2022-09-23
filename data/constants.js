@@ -85,7 +85,7 @@ const CHAINS_ID = {
   ETH_ROPSTEN: '3',
   BSC_MAINNET: '56',
   MATIC_MAINNET: '137',
-  LOCAL_HOST: '31337',
+  TEST: '31337',
 }
 
 const GET_PRICE_TYPES = {

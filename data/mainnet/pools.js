@@ -2304,7 +2304,7 @@ module.exports = [
    `,
   },
   {
-    chain: CHAINS_ID.LOCAL_HOST,
+    chain: CHAINS_ID.TEST,
     id: 'USDC_TEST',
     type: POOL_TYPES.INCENTIVE,
     contractAddress: addresses.V2.USDC.NewPool,

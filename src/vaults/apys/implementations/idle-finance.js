@@ -52,7 +52,7 @@ const getApy = async (tokenSymbol, idleLendingTokenAddress, factor, network = '1
 
   let currentRate, rewardTokenInUsd
 
-  if (network == CHAIN_TYPES.ETH) {
+  if (network == CHAIN_TYPES.ETH || network == CHAIN_TYPES.TEST) {
     const {
       contract: {
         abi: idleControllerAbi,

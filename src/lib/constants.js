@@ -168,7 +168,7 @@ const CHAIN_TYPES = {
   ETH: '1',
   BSC: '56',
   MATIC: '137',
-  LOCAL_HOST: '31337',
+  TEST: '31337',
 }
 
 const BSC_RPC_URL = process.env.BSC_RPC_URL || 'https://bsc-dataseed2.binance.org/'
