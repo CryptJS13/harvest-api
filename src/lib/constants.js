@@ -175,7 +175,7 @@ const BSC_RPC_URL = process.env.BSC_RPC_URL || 'https://bsc-dataseed2.binance.or
 const MATIC_RPC_URL =
   process.env.MATIC_RPC_URL ||
   `https://polygon-mainnet.infura.io/v3/${process.env.MATIC_INFURA_KEY}`
-const LOCAL_RPC_URL = process.env.LOCAL_RPC_URL
+const TEST_RPC_URL = process.env.TEST_RPC_URL
 
 const VENUS_API_URL = 'https://api.venus.io/api/governance/venus'
 const BDO_API_URL = 'https://api.bdollar.fi/api/bdollar/'
@@ -230,7 +230,7 @@ module.exports = {
   GET_POOL_DATA_BATCH_SIZE,
   VENUS_API_URL,
   BSC_RPC_URL,
-  LOCAL_RPC_URL,
+  TEST_RPC_URL,
   CHAIN_TYPES,
   PORT,
   INFURA_URL,
