@@ -9,14 +9,15 @@
   "scripts": {
     "start": "./run-standalone.sh",
     "dev": "nodemon src/index.js",
-    "test": "mocha ./test/integration/*  --timeout 600000",
+    "test": "PORT=3030 MONGODB_DB_NAME=harvest-test-local ACTIVE_ENDPOINTS=all mocha ./test/integration/*  --timeout 600000",
     "debug-web3": "DEBUG_MODE=true yarn start",
     "print-vault": "node ./test/cli/print-vault",
     "test-schema": "node ./test/cli/test-schema",
     "print-diff": "node ./test/cli/test-diff",
     "lint": "eslint ./",
     "lint-fix": "eslint --fix ./",
-    "accounts": "node ./scripts/account-overview"
+    "accounts": "node ./scripts/account-overview",
+    "create-accounts": "node ./scripts/create-accounts"
   },
   "repository": {
     "type": "git",
