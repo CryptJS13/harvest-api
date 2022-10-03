@@ -15,7 +15,8 @@
     "test-schema": "node ./test/cli/test-schema",
     "print-diff": "node ./test/cli/test-diff",
     "lint": "eslint ./",
-    "lint-fix": "eslint --fix ./"
+    "lint-fix": "eslint --fix ./",
+    "accounts": "node ./scripts/account-overview"
   },
   "repository": {
     "type": "git",

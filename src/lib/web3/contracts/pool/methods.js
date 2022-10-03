@@ -18,6 +18,8 @@ const lpToken = instance => countFunctionCall(instance.methods.lpToken().call())
 
 const earned = (address, instance) => countFunctionCall(instance.methods.earned(address).call())
 
+const rewardToken = instance => countFunctionCall(instance.methods.rewardToken().call())
+
 module.exports = {
   balanceOf,
   periodFinish,
@@ -27,4 +29,5 @@ module.exports = {
   lpToken,
   earned,
   tokenRewards,
+  rewardToken,
 }

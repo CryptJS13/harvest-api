@@ -8,7 +8,6 @@ const {
   priceByAddresses,
   priceByIds,
 } = require('./coingecko')
-const tokensFile = require('../../../tokens.json')
 
 const executePriceFunction = async (type, params) => {
   let implementation
