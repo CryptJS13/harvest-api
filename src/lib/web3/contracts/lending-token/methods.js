@@ -3,10 +3,10 @@ const { countFunctionCall } = require('../..')
 const getBalance = (address, instance) =>
   countFunctionCall(instance.methods.balanceOf(address).call())
 
-const getExchangeRate = instance =>
-  countFunctionCall(instance.methods.exchangeRateStored().call())
+const getExchangeRate = instance => countFunctionCall(instance.methods.exchangeRateStored().call())
 
-const getBorrowBalance = (address, instance) => countFunctionCall(instance.methods.borrowBalanceStored(address).call())
+const getBorrowBalance = (address, instance) =>
+  countFunctionCall(instance.methods.borrowBalanceStored(address).call())
 
 const getSupplyRate = instance => countFunctionCall(instance.methods.borrowRatePerBlock().call())
 

@@ -19,9 +19,11 @@ const lpToken = instance => countFunctionCall(instance.methods.lpToken().call())
 
 const earned = (address, instance) => countFunctionCall(instance.methods.earned(address).call())
 
-const earnedByAddress = (rewardToken, account, instance) => countFunctionCall(instance.methods.earned(rewardToken, account).call())
+const earnedByAddress = (rewardToken, account, instance) =>
+  countFunctionCall(instance.methods.earned(rewardToken, account).call())
 
-const earnedByIndex = (n, account, instance) => countFunctionCall(instance.methods.earned(n, account).call())
+const earnedByIndex = (n, account, instance) =>
+  countFunctionCall(instance.methods.earned(n, account).call())
 
 const rewardRateForToken = (address, instance) =>
   countFunctionCall(instance.methods.rewardRateForToken(address).call())
@@ -29,7 +31,8 @@ const rewardRateForToken = (address, instance) =>
 const periodFinishForToken = (address, instance) =>
   countFunctionCall(instance.methods.periodFinishForToken(address).call())
 
-const rewardTokensLength = instance => countFunctionCall(instance.methods.rewardTokensLength().call())
+const rewardTokensLength = instance =>
+  countFunctionCall(instance.methods.rewardTokensLength().call())
 
 const rewardTokens = (n, instance) => countFunctionCall(instance.methods.rewardTokens(n).call())
 
