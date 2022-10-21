@@ -1,9 +1,6 @@
 require('dotenv').config()
-<<<<<<< HEAD
 const keys = require('../../dev-keys.json')
 const PORT = process.env.PORT || 3000
-=======
->>>>>>> 9e3c7930f7346496b3319beb860fd2ba0a67e23e
 const INFURA_URL =
   process.env.MAINNET_RPC_URL || `https://mainnet.infura.io/v3/${process.env.INFURA_KEY}`
 const INFURA_WS_URL =

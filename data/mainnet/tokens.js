@@ -14,6 +14,18 @@ const profitSharingCut8Percent = '0.92'
 const convexProfitSharingFactor = '0.63'
 
 module.exports = {
+  iETH: {
+    chain: CHAINS_ID.ETH_MAINNET,
+    tokenAddress: addresses.iETH,
+    decimals: '18',
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.iETH] },
+  },
+  iWBTC: {
+    chain: CHAINS_ID.ETH_MAINNET,
+    tokenAddress: addresses.iWBTC,
+    decimals: '18',
+    priceFunction: { type: GET_PRICE_TYPES.COINGECKO_CONTRACT, params: [addresses.iWBTC] },
+  },
   FARM: {
     chain: CHAINS_ID.ETH_MAINNET,
     category: VAULT_CATEGORIES_IDS.GENERAL,
